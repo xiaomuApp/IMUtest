@@ -2,29 +2,19 @@ package com.scnu.imutest;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.CheckBox;
 
 
-public class ClubInformationData implements Parcelable{
+public class ListCellData2 implements Parcelable{
 
-	public ClubInformationData(int id,String name, String position, String department,
+	public ListCellData2(String name, String position, String department,
 			String club) {
 		super();
-		this.id=id;
 		this.name = name;
 		this.position = position;
 		this.department = department;
 		this.club = club;
 	}
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -55,13 +45,11 @@ public class ClubInformationData implements Parcelable{
 		return department + " - " + name;
 	}
 
-	private int id=0;
 	private String name=" ";
 	private String position=" ";
 	private String department=" ";
 	private String club=" ";
-	public boolean isCheck = false;
-	public CheckBox personnelCheckBox=new CheckBox(null);
+	public boolean isCheck = false; 
 
 	@Override
 	public int describeContents() {
@@ -69,28 +57,26 @@ public class ClubInformationData implements Parcelable{
 	}
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(id);
 		dest.writeString(name);
 		dest.writeString(position);
 		dest.writeString(department);
 		dest.writeString(club);
 	}
 	
-	public static final Parcelable.Creator<ClubInformationData> CREATOR = new Parcelable.Creator<ClubInformationData>() {
+	public static final Parcelable.Creator<ListCellData2> CREATOR = new Parcelable.Creator<ListCellData2>() {
 
 		@Override
-		public ClubInformationData createFromParcel(Parcel source) {			
-			return new ClubInformationData(source);
+		public ListCellData2 createFromParcel(Parcel source) {			
+			return new ListCellData2(source);
 		}
 
 		@Override
-		public ClubInformationData[] newArray(int size) {
-			return new ClubInformationData[size];
+		public ListCellData2[] newArray(int size) {
+			return new ListCellData2[size];
 		}
 	};
 	
-	public ClubInformationData(Parcel source){
-		id=source.readInt();
+	public ListCellData2(Parcel source){
 		name = source.readString();
 		position = source.readString();
 		department = source.readString();
