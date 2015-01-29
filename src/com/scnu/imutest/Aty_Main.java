@@ -30,13 +30,13 @@ public class Aty_Main extends Activity implements OnClickListener {
 		System.out.println(4);
 		findViewById(R.id.btnPerformer).setOnClickListener(this);
 		System.out.println(5);
+		personnelList = new ArrayList<Data_ClubInformation>();
 		personnelList.add(pl1);
 		personnelList.add(pl2);
 		personnelList.add(pl3);
 		personnelList.add(pl4);
 		personnelList.add(pl5);
 		bundlePersonnelPlacement=new Bundle();
-		personnelList=new ArrayList<Data_ClubInformation>();
 		bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
 		
 	}
