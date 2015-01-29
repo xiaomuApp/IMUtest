@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -13,25 +14,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class Aty_PeopleArrange extends Activity implements OnItemClickListener {
+public class Aty_PersonnelArrange extends Activity implements OnItemClickListener, OnClickListener {
 
 	private ListView lv;
-	private ArrayAdapter<ClubInformationData> adapter;
+	private ArrayAdapter<Data_ClubInformation> adapter;
+	private boolean enterdPersonnelListFlag=false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_people_arrange);
-		adapter = new ArrayAdapter<ClubInformationData>(this, R.layout.list_cell_people_arrange);
-
+		adapter = new ArrayAdapter<Data_ClubInformation>(this, R.layout.list_cell_people_arrange);
 		lv = (ListView) findViewById(R.id.lvPeople);
+		if (enterdPersonnelListFlag==true) {
 
-		ArrayList<ClubInformationData> taskTheme = this.getIntent().getExtras().getParcelableArrayList("isCheckedPersonnelList");
-		for (int i = 0; i < taskTheme.size(); i++) {
-		TextView tv=new TextView(this);
-		tv.setText(taskTheme.get (i).getName());
+			ArrayList<Data_ClubInformation> taskTheme = this.getIntent().getExtras().getParcelableArrayList("isCheckedPersonnelList");
+			for (int i = 0; i < taskTheme.size(); i++) {
+				TextView tv=new TextView(this);
+				tv.setText(taskTheme.get(i).getName());
+				lv.addView(tv);
+			}
 		}
 		lv.setOnItemClickListener(this);
+		findViewById(R.id.btnAddPeople).setOnClickListener(this);
 	}
 
 
@@ -41,7 +46,7 @@ public class Aty_PeopleArrange extends Activity implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		ClubInformationData data = adapter.getItem(position);
+		Data_ClubInformation data = adapter.getItem(position);
 
 		Toast.makeText(this, String.format("����:%s ְλ:%s ����:%s ����:%s", data.getName(),data.getPosition(),data.getDepartment(),data.getClub()), Toast.LENGTH_SHORT).show();
 	}
@@ -50,15 +55,16 @@ public class Aty_PeopleArrange extends Activity implements OnItemClickListener {
 		Intent intent = new Intent(this, Aty_PersonnelList.class);
 		adapter.clear();
 		startActivityForResult(intent, 0);
+		enterdPersonnelListFlag=true;
 	}
 
-	public ArrayList<ClubInformationData> data=new ArrayList<ClubInformationData>();
+	public ArrayList<Data_ClubInformation> data=new ArrayList<Data_ClubInformation>();
 	@Override
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 
 		if(arg1==1)return;
 		data = arg2.getExtras().getParcelableArrayList("list");
-		for(ClubInformationData d:data){
+		for(Data_ClubInformation d:data){
 			adapter.add(d);
 		}
 		lv.setAdapter(adapter);
@@ -68,7 +74,7 @@ public class Aty_PeopleArrange extends Activity implements OnItemClickListener {
 
 
 	public void returnLast(View view){
-		Intent intent = new Intent(this, Aty_EditAssignment.class);
+		Intent intent = new Intent(this, Aty_EditTask.class);
 		startActivity(intent);
 
 	}
@@ -77,5 +83,22 @@ public class Aty_PeopleArrange extends Activity implements OnItemClickListener {
 
 		Toast.makeText(this, "�˹��ܴ�����", Toast.LENGTH_SHORT).show();
 
+	}
+
+
+
+
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnAddPeople:
+			Intent iAddPeople=new Intent(this, Aty_PersonnelList.class);
+			startActivity(iAddPeople);
+			break;
+
+		default:
+			break;
+		}
 	}
 }

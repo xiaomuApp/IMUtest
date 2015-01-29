@@ -5,9 +5,9 @@ import android.os.Parcelable;
 import android.widget.CheckBox;
 
 
-public class ClubInformationData implements Parcelable{
+public class Data_ClubInformation implements Parcelable{
 
-	public ClubInformationData(int id,String name, String position, String department,
+	public Data_ClubInformation(int id,String name, String position, String department,
 			String club) {
 		super();
 		this.id=id;
@@ -76,20 +76,20 @@ public class ClubInformationData implements Parcelable{
 		dest.writeString(club);
 	}
 	
-	public static final Parcelable.Creator<ClubInformationData> CREATOR = new Parcelable.Creator<ClubInformationData>() {
+	public static final Parcelable.Creator<Data_ClubInformation> CREATOR = new Parcelable.Creator<Data_ClubInformation>() {
 
 		@Override
-		public ClubInformationData createFromParcel(Parcel source) {			
-			return new ClubInformationData(source);
+		public Data_ClubInformation createFromParcel(Parcel source) {			
+			return new Data_ClubInformation(source);
 		}
 
 		@Override
-		public ClubInformationData[] newArray(int size) {
-			return new ClubInformationData[size];
+		public Data_ClubInformation[] newArray(int size) {
+			return new Data_ClubInformation[size];
 		}
 	};
 	
-	public ClubInformationData(Parcel source){
+	public Data_ClubInformation(Parcel source){
 		id=source.readInt();
 		name = source.readString();
 		position = source.readString();

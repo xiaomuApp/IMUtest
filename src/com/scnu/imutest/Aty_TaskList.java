@@ -11,10 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class Aty_ActivityList extends Activity implements OnItemClickListener {
+public class Aty_TaskList extends Activity implements OnItemClickListener {
 
 	private ListView lv;
-	private ArrayAdapter<ListCellData> adapter;
+	private ArrayAdapter<Data_ActivityList> adapter;
 	private int numTouch=1;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +22,11 @@ public class Aty_ActivityList extends Activity implements OnItemClickListener {
 		setContentView(R.layout.activity_activity_list);
 
 		lv=(ListView) findViewById(R.id.listView1);
-		adapter=new ArrayAdapter<ListCellData>(this, android.R.layout.simple_list_item_1);
+		adapter=new ArrayAdapter<Data_ActivityList>(this, android.R.layout.simple_list_item_1);
 		findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				adapter.add(new ListCellData(Aty_ActivityList.this, "����"+numTouch+"\n",new Intent(Aty_ActivityList.this, Aty_EditAssignment.class)));
+				adapter.add(new Data_ActivityList(Aty_TaskList.this, R.string.task+numTouch+"\n",new Intent(Aty_TaskList.this, Aty_EditTask.class)));
 				numTouch++;				
 			}
 		});
@@ -38,28 +38,12 @@ public class Aty_ActivityList extends Activity implements OnItemClickListener {
 	}
 
 
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.main, menu);
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//
-//		int id = item.getItemId();
-//		if (id == R.id.action_settings) {
-//			return true;
-//		}
-//		return super.onOptionsItemSelected(item);
-//	}
 
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		ListCellData data=adapter.getItem(position);
+		Data_ActivityList data=adapter.getItem(position);
 		data.StarActivity();
 
 	}

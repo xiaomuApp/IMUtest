@@ -5,25 +5,36 @@
     android:orientation="vertical"
     tools:context="com.scnu.imutest.Aty_Welcome" >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topic_height"
+        android:background="@color/topic_blue" >
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="14dp"
-        android:text="@string/hello_world" />
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topic_height"
+        android:text="@string/text_test"
+        android:textSize="@dimen/topic_font"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white" />
+
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/btnOrganiger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:text="组织者" />
+        android:layout_marginLeft="@dimen/tv_left_margin"
+        android:text="@string/text_organier" />
 
     <Button
         android:id="@+id/btnPerformer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:text="执行者" />
+        android:layout_marginLeft="@dimen/tv_left_margin"
+        android:text="@string/text_performer" />
 
 </LinearLayout>

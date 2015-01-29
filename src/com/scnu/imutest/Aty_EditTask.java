@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Aty_EditAssignment extends Activity {
+public class Aty_EditTask extends Activity {
 	
 	//��������
 		@SuppressWarnings("unused")
@@ -33,15 +33,15 @@ public class Aty_EditAssignment extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_assignment);
+		setContentView(R.layout.activity_edit_task);
 		/*���TextView����*/
-		theme=(TextView)findViewById(R.id.theme);
-		time=(TextView)findViewById(R.id.time);
-		message=(TextView)findViewById(R.id.message);
+		theme=(TextView)findViewById(R.id.tvActivityID);
+		time=(TextView)findViewById(R.id.tvActivityTime);
+		message=(TextView)findViewById(R.id.tvActivityContext);
 		/*���EditText����*/
-		m_theme=(EditText)findViewById(R.id.T_Text);
-		m_time=(EditText)findViewById(R.id.Time);
-		m_message=(EditText)findViewById(R.id.Message);
+		m_theme=(EditText)findViewById(R.id.tvActivityID);
+		m_time=(EditText)findViewById(R.id.tvActivityTime);
+		m_message=(EditText)findViewById(R.id.tvActivityContext);
 		
 		//receiveMessage();
 		
@@ -50,9 +50,9 @@ public class Aty_EditAssignment extends Activity {
 		m_time.setHint("�������ֹʱ��");
 		m_message.setHint("��������������");
 		/*���Button����*/
-		final Button back=(Button)findViewById(R.id.back);
-		final Button save=(Button)findViewById(R.id.save);
-		final Button next=(Button)findViewById(R.id.next);
+		final Button back=(Button)findViewById(R.id.btnReturnActivity);
+		final Button save=(Button)findViewById(R.id.btnSaveEditTask);
+		final Button next=(Button)findViewById(R.id.btnPersonnelArrange);
 		
 		/*����button�齨���¼�listener*/
 		back.setOnClickListener(backOnClick);
@@ -123,7 +123,7 @@ public class Aty_EditAssignment extends Activity {
 	{
 		public void onClick(View w)
 		{
-			AlertDialog.Builder nextDlg=new AlertDialog.Builder(Aty_EditAssignment.this);
+			AlertDialog.Builder nextDlg=new AlertDialog.Builder(Aty_EditTask.this);
 			nextDlg.setTitle("����");
 			nextDlg.setMessage("�Ƿ���ת����Ա������棿");
 			nextDlg.setIcon(android.R.drawable.ic_dialog_info);
@@ -139,7 +139,7 @@ public class Aty_EditAssignment extends Activity {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							Intent it=new Intent();
-							it.setClass(Aty_EditAssignment.this,Aty_PeopleArrange.class);
+							it.setClass(Aty_EditTask.this,Aty_PersonnelArrange.class);
 							getMessage();
 							it.putExtras(bundle);
 							startActivity(it);	
@@ -149,22 +149,4 @@ public class Aty_EditAssignment extends Activity {
 		}
 	};
 
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.main, menu);
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		// Handle action bar item clicks here. The action bar will
-//		// automatically handle clicks on the Home/Up button, so long
-//		// as you specify a parent activity in AndroidManifest.xml.
-//		int id = item.getItemId();
-//		if (id == R.id.action_settings) {
-//			return true;
-//		}
-//		return super.onOptionsItemSelected(item);
-//	}
 }

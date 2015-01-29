@@ -9,7 +9,7 @@
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#2680ef" >
+        android:background="@color/topic_blue" >
 
         <TextView
             android:id="@+id/textView1"
@@ -20,15 +20,16 @@
             android:text="活动列表"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffff"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
         <ImageButton
+            
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="#0000"
+            android:background="@color/blue"
             android:src="@drawable/back" />
     </RelativeLayout>
 

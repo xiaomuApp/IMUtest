@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class Aty_PerformerActivityList extends Activity {
+public class Aty_PerformerTaskList extends Activity {
 
 	private TextView tvActivityContext,tvActivityTime,tvActivityID;
  	@Override
@@ -27,7 +27,7 @@ public class Aty_PerformerActivityList extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i=new Intent(Aty_PerformerActivityList.this, Aty_Main.class);
+				Intent i=new Intent(Aty_PerformerTaskList.this, Aty_Main.class);
 				
 				startActivity(i);
 			}

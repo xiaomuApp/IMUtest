@@ -7,10 +7,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/topic_background_darkblue"
+        android:background="@color/topic_blue"
         android:padding="@dimen/topic_margin" >
 
         <ImageButton
+            android:id="@+id/btnReturnActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/topic_background_darkblue"
@@ -50,7 +51,6 @@
             android:lines="1"
             android:paddingBottom="@dimen/list_base_margin" />
 
-        
         <EditText
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -63,6 +63,7 @@
             android:paddingTop="@dimen/btn_release_margin" >
 
             <Button
+                android:id="@+id/btnSaveEditTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/topic_background_darkblue"
@@ -79,6 +80,7 @@
             android:paddingTop="@dimen/btn_release_margin" >
 
             <Button
+                android:id="@+id/btnPersonnelArrange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/topic_background_darkblue"

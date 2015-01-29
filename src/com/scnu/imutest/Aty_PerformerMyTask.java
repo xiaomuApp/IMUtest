@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class Aty_PerformerAssignment extends Activity implements OnClickListener, OnItemClickListener {
+public class Aty_PerformerMyTask extends Activity implements OnClickListener, OnItemClickListener {
 
 	
 	private ListView lv;
@@ -23,7 +23,6 @@ public class Aty_PerformerAssignment extends Activity implements OnClickListener
         setContentView(R.layout.activity_performer_assignment);
         
         
-        //����adapter,�����洢����ʾListView�����ݡ�
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
         lv=(ListView)findViewById(R.id.lv);
         lv.setAdapter(adapter);
@@ -34,35 +33,14 @@ public class Aty_PerformerAssignment extends Activity implements OnClickListener
         adapter.add("������");
         adapter.add("������");
         
-        //����ListView�����ݼ�����
         lv.setOnItemClickListener(this);
     }
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-    //�����¼�
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
 		
-		Intent iPerformerActivityList=new Intent(Aty_PerformerAssignment.this,Aty_PerformerActivityList.class);
+		Intent iPerformerActivityList=new Intent(Aty_PerformerMyTask.this,Aty_PerformerTaskList.class);
 		Bundle value=new Bundle();
 		value.putString("id", "任务1");
 		value.putString("context", "女生节搬桌子");

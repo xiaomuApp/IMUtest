@@ -22,13 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Aty_ActivityList"></activity>
-        <activity android:name="Aty_EditAssignment"></activity>
-        <activity android:name="Aty_Main"></activity>
-        <activity android:name="Aty_PerformerActivityList"></activity>
-        <activity android:name="Aty_PerformerAssignment"></activity>
-        <activity android:name="Aty_PersonnelList"></activity>
-        <activity android:name="Aty_PeopleArrange"></activity>
     </application>
 
 </manifest>
