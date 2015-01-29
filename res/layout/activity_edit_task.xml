@@ -45,6 +45,7 @@
             android:paddingBottom="@dimen/list_base_margin" />
 
         <EditText
+            android:id="@+id/evTaskDealtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_dead_time"
@@ -52,6 +53,7 @@
             android:paddingBottom="@dimen/list_base_margin" />
 
         <EditText
+            android:id="@+id/evTaskMessage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
