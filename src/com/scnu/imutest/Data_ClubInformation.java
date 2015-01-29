@@ -7,6 +7,14 @@ import android.widget.CheckBox;
 
 public class Data_ClubInformation implements Parcelable{
 
+	private int id=0;
+	private String name=" ";
+	private String position=" ";
+	private String department=" ";
+	private String club=" ";
+	public boolean isCheck = false;
+	public CheckBox personnelCheckBox=null;
+
 	public Data_ClubInformation(int id,String name, String position, String department,
 			String club) {
 		super();
@@ -16,7 +24,7 @@ public class Data_ClubInformation implements Parcelable{
 		this.department = department;
 		this.club = club;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -49,19 +57,30 @@ public class Data_ClubInformation implements Parcelable{
 	public void setClub(String club) {
 		this.club = club;
 	}
-	
+
 	@Override
 	public String toString() {
 		return department + " - " + name;
 	}
 
-	private int id=0;
-	private String name=" ";
-	private String position=" ";
-	private String department=" ";
-	private String club=" ";
-	public boolean isCheck = false;
-	public CheckBox personnelCheckBox=new CheckBox(null);
+
+	public boolean isCheck() {
+		return isCheck;
+	}
+
+	public void setCheck(boolean isCheck) {
+		this.isCheck = isCheck;
+	}
+
+	public CheckBox getPersonnelCheckBox() {
+		return personnelCheckBox;
+	}
+
+	public void setPersonnelCheckBox(CheckBox personnelCheckBox) {
+		this.personnelCheckBox = personnelCheckBox;
+	}
+
+
 
 	@Override
 	public int describeContents() {
@@ -75,7 +94,7 @@ public class Data_ClubInformation implements Parcelable{
 		dest.writeString(department);
 		dest.writeString(club);
 	}
-	
+
 	public static final Parcelable.Creator<Data_ClubInformation> CREATOR = new Parcelable.Creator<Data_ClubInformation>() {
 
 		@Override
@@ -88,7 +107,7 @@ public class Data_ClubInformation implements Parcelable{
 			return new Data_ClubInformation[size];
 		}
 	};
-	
+
 	public Data_ClubInformation(Parcel source){
 		id=source.readInt();
 		name = source.readString();

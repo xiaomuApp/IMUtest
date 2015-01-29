@@ -25,6 +25,10 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 		findViewById(R.id.btnYes).setOnClickListener(this);
 		findViewById(R.id.btnAllSelect).setOnClickListener(this);
 		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
+		for (int i = 0; i < personnelList.size(); i++) {
+			personnelList.get(i).personnelCheckBox=new CheckBox(this);
+			personnelList.get(i).personnelCheckBox.setText(personnelList.get(i).getDepartment()+personnelList.get(i).getPosition()+personnelList.get(i).getName());
+		}
 		selectPersonnel(personnelList);
 		judgeIsChecked(personnelList);
 	}

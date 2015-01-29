@@ -10,12 +10,9 @@ public class Aty_Welcome extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_welcome);
-
-
 		new Thread(){
-
-
 			public void run() {
 				try {
 					Thread.sleep(1000);
