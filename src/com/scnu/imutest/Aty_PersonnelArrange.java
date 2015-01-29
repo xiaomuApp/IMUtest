@@ -48,7 +48,7 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 			long id) {
 		Data_ClubInformation data = adapter.getItem(position);
 
-		Toast.makeText(this, String.format("����:%s ְλ:%s ����:%s ����:%s", data.getName(),data.getPosition(),data.getDepartment(),data.getClub()), Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, String.format("姓名:%s 职位:%s 部门:%s 社团:%s", data.getName(),data.getPosition(),data.getDepartment(),data.getClub()), Toast.LENGTH_SHORT).show();
 	}
 
 	public void startListPeople(View view){
@@ -81,7 +81,7 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 
 	public void btnRelease(View view){
 
-		Toast.makeText(this, "�˹��ܴ�����", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "此功能coding中。。。", Toast.LENGTH_SHORT).show();
 
 	}
 
