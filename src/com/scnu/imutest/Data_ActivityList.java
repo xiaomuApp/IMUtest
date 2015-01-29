@@ -1,9 +1,15 @@
 package com.scnu.imutest;
 
+import java.io.Serializable;
+
 import android.content.Context;
 import android.content.Intent;
 
-public class Data_ActivityList {
+public class Data_ActivityList implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String activityListName="";
 	private Context acitvityContext=null;
 	private Intent activityRelatIntent=null;
