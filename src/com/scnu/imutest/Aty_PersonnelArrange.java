@@ -1,24 +1,22 @@
 package com.scnu.imutest;
 
 import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class Aty_PersonnelArrange extends Activity implements OnItemClickListener, OnClickListener {
+public class Aty_PersonnelArrange extends Activity implements OnItemClickListener {
 
 	private ListView lv;
 	private ArrayAdapter<Data_ClubInformation> adapter;
-	private boolean enterdPersonnelListFlag=false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,21 +24,9 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 		setContentView(R.layout.activity_people_arrange);
 		adapter = new ArrayAdapter<Data_ClubInformation>(this, R.layout.list_cell_people_arrange);
 		lv = (ListView) findViewById(R.id.lvPeople);
-		if (enterdPersonnelListFlag==true) {
 
-			ArrayList<Data_ClubInformation> taskTheme = this.getIntent().getExtras().getParcelableArrayList("isCheckedPersonnelList");
-			for (int i = 0; i < taskTheme.size(); i++) {
-				TextView tv=new TextView(this);
-				tv.setText(taskTheme.get(i).getName());
-				lv.addView(tv);
-			}
-		}
 		lv.setOnItemClickListener(this);
-		findViewById(R.id.btnAddPeople).setOnClickListener(this);
 	}
-
-
-
 
 
 	@Override
@@ -53,20 +39,22 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 
 	public void startListPeople(View view){
 		Intent intent = new Intent(this, Aty_PersonnelList.class);
-		adapter.clear();
 		startActivityForResult(intent, 0);
-		enterdPersonnelListFlag=true;
 	}
 
-	public ArrayList<Data_ClubInformation> data=new ArrayList<Data_ClubInformation>();
+	public ArrayList<Data_ClubInformation> add=new ArrayList<Data_ClubInformation>();
+	public ArrayList<Data_ClubInformation> concel=new ArrayList<Data_ClubInformation>();
 	@Override
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 
 		if(arg1==1)return;
-		data = arg2.getExtras().getParcelableArrayList("list");
-		for(Data_ClubInformation d:data){
+		adapter.clear();
+		add = arg2.getExtras().getParcelableArrayList("add");
+		for(Data_ClubInformation d:add){
 			adapter.add(d);
 		}
+		
+		adapter.notifyDataSetChanged();
 		lv.setAdapter(adapter);
 
 		super.onActivityResult(arg0, arg1, arg2);
@@ -85,20 +73,4 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 
 	}
 
-
-
-
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btnAddPeople:
-			Intent iAddPeople=new Intent(this, Aty_PersonnelList.class);
-			startActivity(iAddPeople);
-			break;
-
-		default:
-			break;
-		}
-	}
 }

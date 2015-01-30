@@ -1,12 +1,18 @@
 package com.scnu.imutest;
 
+import java.io.Serializable;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.CheckBox;
 
 
-public class Data_ClubInformation implements Parcelable{
+public class Data_ClubInformation implements Parcelable, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id=0;
 	private String name=" ";
 	private String position=" ";
