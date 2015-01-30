@@ -1,5 +1,7 @@
 package com.scnu.imutest;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 
 public class Aty_PerformerMyTask extends Activity implements OnClickListener, OnItemClickListener {
 
+	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
 	
 	private ListView lv;
 	private ArrayAdapter<String>  adapter;
@@ -21,7 +24,8 @@ public class Aty_PerformerMyTask extends Activity implements OnClickListener, On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_performer_assignment);
-        
+		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
+		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
         
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
         lv=(ListView)findViewById(R.id.lv);

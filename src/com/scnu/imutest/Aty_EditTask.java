@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class Aty_EditTask extends Activity {
 	
 
-	private ArrayList<Data_ClubInformation> personnelList=null;//获取数据
+	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
 
 	/*定义变量*/
 	private EditText m_theme;    //定义主题输入框变量

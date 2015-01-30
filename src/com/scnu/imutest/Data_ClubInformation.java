@@ -17,10 +17,18 @@ public class Data_ClubInformation implements Parcelable{
 	private String name=" ";
 	private String position=" ";
 	private String department=" ";
+
 	private String club=" ";
 	public ArrayList<Data_Task> data_TaskList=null; //任务列表
 	public boolean isCheck = false;
 	public CheckBox personnelCheckBox=null;
+	public ArrayList<Data_Task> getData_TaskList() {
+		return data_TaskList;
+	}
+	
+	public void setData_TaskList(ArrayList<Data_Task> data_TaskList) {
+		this.data_TaskList = data_TaskList;
+	}
 	
 
 	public Data_ClubInformation(int id,String name, String position, String department,

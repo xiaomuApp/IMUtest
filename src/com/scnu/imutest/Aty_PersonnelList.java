@@ -13,18 +13,20 @@ import android.widget.Toast;
 
 public class Aty_PersonnelList extends Activity implements OnClickListener {
 
+	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
 
 	@SuppressWarnings("unused")
 	private LinearLayout.LayoutParams LP_MM=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
 	private LinearLayout.LayoutParams LP_MW=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-	private ArrayList<Data_ClubInformation> personnelList=new ArrayList<Data_ClubInformation>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_personnel_list);
+		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
+		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
+		
 		findViewById(R.id.btnYes).setOnClickListener(this);
 		findViewById(R.id.btnAllSelect).setOnClickListener(this);
-		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
 		for (int i = 0; i < personnelList.size(); i++) {
 			personnelList.get(i).personnelCheckBox=new CheckBox(this);
 			personnelList.get(i).personnelCheckBox.setText(personnelList.get(i).getDepartment()+personnelList.get(i).getPosition()+personnelList.get(i).getName());

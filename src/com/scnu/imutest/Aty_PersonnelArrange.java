@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 public class Aty_PersonnelArrange extends Activity implements OnItemClickListener, OnClickListener {
 
+	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
+	
 	private ListView lv;
 	private ArrayAdapter<Data_ClubInformation> adapter;
 	private boolean enterdPersonnelListFlag=false;
@@ -24,6 +26,10 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_people_arrange);
+		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
+		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
+		
+		
 		adapter = new ArrayAdapter<Data_ClubInformation>(this, R.layout.list_cell_people_arrange);
 		lv = (ListView) findViewById(R.id.lvPeople);
 		if (enterdPersonnelListFlag==true) {

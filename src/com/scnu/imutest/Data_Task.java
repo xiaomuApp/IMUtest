@@ -9,10 +9,11 @@ public class Data_Task {
 	private Intent activityRelatIntent=null;
 	private Data_TaskDistribute activityTask=null;
 	
-	public Data_Task(Context context,String listName,Intent relatIntent) {
+	public Data_Task(Context context,String listName,Intent relatIntent,Data_TaskDistribute activityTask) {
 		this.acitvityContext=context;
 		this.activityListName=listName;
 		this.activityRelatIntent=relatIntent;
+		this.activityTask=activityTask;
 	}
 	
 	

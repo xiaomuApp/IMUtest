@@ -10,7 +10,8 @@ import android.view.View.OnClickListener;
 
 public class Aty_Main extends Activity implements OnClickListener {
 
-	
+
+	private ArrayList<Data_Task> currentData_Task=null;
 	private Data_ClubInformation pl1=new Data_ClubInformation(2014021349, "池雪辉", "组长", "安卓组", "逗比比",1);
 	private Data_ClubInformation pl2=new Data_ClubInformation(2014021348, "冼立志", "组员", "安卓组", "逗比比",0);
 	private Data_ClubInformation pl3=new Data_ClubInformation(2014021347, "黄炫", "组员", "安卓组", "逗比比",0);
@@ -18,7 +19,7 @@ public class Aty_Main extends Activity implements OnClickListener {
 	private Data_ClubInformation pl5=new Data_ClubInformation(2014021345, "吴伟峰", "组员", "安卓组", "逗比比",0);
 	private ArrayList<Data_ClubInformation> personnelList=null;
 	public static Bundle bundlePersonnelPlacement=null;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,9 +32,16 @@ public class Aty_Main extends Activity implements OnClickListener {
 		personnelList.add(pl3);
 		personnelList.add(pl4);
 		personnelList.add(pl5);
+		Data_TaskDistribute activityTask = new Data_TaskDistribute("任务1", "2015.2.14", "完成小木社团app初稿，并通过审核", "完成小木社团app初稿", personnelList);
+		currentData_Task=new ArrayList<Data_Task>();
+		currentData_Task.add(new Data_Task(this, "任务1", null, activityTask));
+		for (int i = 0; i < personnelList.size(); i++) {
+
+			personnelList.get(i).setData_TaskList(currentData_Task);
+
+		}
 		bundlePersonnelPlacement=new Bundle();
 		bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
-		
 	}
 
 	@Override
@@ -51,6 +59,6 @@ public class Aty_Main extends Activity implements OnClickListener {
 		default:
 			break;
 		}
-		
+
 	}
 }

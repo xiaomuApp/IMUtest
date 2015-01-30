@@ -1,5 +1,7 @@
 package com.scnu.imutest;
 
+import java.util.ArrayList;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,9 +12,9 @@ public class Data_TaskDistribute implements Parcelable{
 	private String taskcutofftime="";//暂定使用String类型，任务截止时间
 	private String taskContent="";//任务内容
 	private String taskSubject="";//任务主题
-	private Data_ClubInformation taskArrangePersonnel=null;
+	private ArrayList<Data_ClubInformation> taskArrangePersonnel=null;
 	
-	public Data_TaskDistribute(String taskName,String taskcutofftime,String taskContent,String taskSubject,Data_ClubInformation taskArrangePersonnel) {
+	public Data_TaskDistribute(String taskName,String taskcutofftime,String taskContent,String taskSubject,ArrayList<Data_ClubInformation> taskArrangePersonnel) {
 		this.taskName=taskName;
 		this.taskcutofftime=taskcutofftime;
 		this.taskContent=taskContent;
@@ -52,11 +54,11 @@ public class Data_TaskDistribute implements Parcelable{
 		this.taskSubject = taskSubject;
 	}
 
-	public Data_ClubInformation getTaskArrangePersonnel() {
+	public ArrayList<Data_ClubInformation> getTaskArrangePersonnel() {
 		return taskArrangePersonnel;
 	}
 
-	public void setTaskArrangePersonnel(Data_ClubInformation taskArrangePersonnel) {
+	public void setTaskArrangePersonnel(ArrayList<Data_ClubInformation> taskArrangePersonnel) {
 		this.taskArrangePersonnel = taskArrangePersonnel;
 	}
 
