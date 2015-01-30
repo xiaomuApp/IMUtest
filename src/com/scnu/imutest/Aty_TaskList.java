@@ -14,7 +14,7 @@ import android.widget.ListView;
 public class Aty_TaskList extends Activity implements OnItemClickListener {
 
 	private ListView lv;
-	private ArrayAdapter<Data_ActivityList> adapter;
+	private ArrayAdapter<Data_Task> adapter;
 	private int numTouch=1;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +22,11 @@ public class Aty_TaskList extends Activity implements OnItemClickListener {
 		setContentView(R.layout.activity_activity_list);
 
 		lv=(ListView) findViewById(R.id.listView1);
-		adapter=new ArrayAdapter<Data_ActivityList>(this, android.R.layout.simple_list_item_1);
+		adapter=new ArrayAdapter<Data_Task>(this, android.R.layout.simple_list_item_1);
 		findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				adapter.add(new Data_ActivityList(Aty_TaskList.this, R.string.task+numTouch+"\n",new Intent(Aty_TaskList.this, Aty_EditTask.class)));
+				adapter.add(new Data_Task(Aty_TaskList.this, getResources().getString(R.string.task)+numTouch+"\n",new Intent(Aty_TaskList.this, Aty_EditTask.class)));
 				numTouch++;				
 			}
 		});
@@ -43,7 +43,7 @@ public class Aty_TaskList extends Activity implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		Data_ActivityList data=adapter.getItem(position);
+		Data_Task data=adapter.getItem(position);
 		data.StarActivity();
 
 	}

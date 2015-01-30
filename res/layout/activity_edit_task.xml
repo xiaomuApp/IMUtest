@@ -10,14 +10,14 @@
         android:background="@color/topic_blue"
         android:padding="@dimen/topic_margin" >
 
-        <ImageButton
+        <Button
             android:id="@+id/btnReturnActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/topic_background_darkblue"
             android:contentDescription="@string/btn_return"
             android:onClick="returnLast"
-            android:src="@drawable/btn_return" />
+            android:background="@drawable/btn_return"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,6 +45,7 @@
             android:paddingBottom="@dimen/list_base_margin" />
 
         <EditText
+            android:id="@+id/evTaskCutOffTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_dead_time"
@@ -52,6 +53,7 @@
             android:paddingBottom="@dimen/list_base_margin" />
 
         <EditText
+            android:id="@+id/evTaskContent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

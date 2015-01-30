@@ -3,16 +3,16 @@ package com.scnu.imutest;
 import android.content.Context;
 import android.content.Intent;
 
-public class Data_ActivityList {
+public class Data_Task {
 	private String activityListName="";
 	private Context acitvityContext=null;
 	private Intent activityRelatIntent=null;
 	private Data_TaskDistribute activityTask=null;
 	
-	public Data_ActivityList(Context context,String ListName,Intent RelatIntent) {
+	public Data_Task(Context context,String listName,Intent relatIntent) {
 		this.acitvityContext=context;
-		this.activityListName=ListName;
-		this.activityRelatIntent=RelatIntent;
+		this.activityListName=listName;
+		this.activityRelatIntent=relatIntent;
 	}
 	
 	

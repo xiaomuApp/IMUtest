@@ -1,5 +1,7 @@
 package com.scnu.imutest;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,18 +11,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Aty_EditTask extends Activity {
 	
 	//��������
-		@SuppressWarnings("unused")
-		private TextView theme;      //�����ʶ�����
-		@SuppressWarnings("unused")
-		private TextView time;       //��ֹʱ���ʶ�����
-		@SuppressWarnings("unused")
-		private TextView message;    //���ݱ�ʶ�����
 		private EditText m_theme;    //������������
 		private EditText m_time;     //��ֹʱ����������
 		private EditText m_message;  //������������
@@ -29,41 +24,55 @@ public class Aty_EditTask extends Activity {
 		private String s_time;            //�����ֹʱ���ַ���
 		private String s_message;     //���������ַ���
 		private Bundle bundle;
+		private ArrayList<Data_ClubInformation> personnelList=null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_task);
-		/*���TextView����*/
-		theme=(TextView)findViewById(R.id.tvActivityID);
-		time=(TextView)findViewById(R.id.tvActivityTime);
-		message=(TextView)findViewById(R.id.tvActivityContext);
 		/*���EditText����*/
-		m_theme=(EditText)findViewById(R.id.tvActivityID);
-		m_time=(EditText)findViewById(R.id.tvActivityTime);
-		m_message=(EditText)findViewById(R.id.tvActivityContext);
+		m_theme=(EditText)findViewById(R.id.evTaskTheme);
+		System.out.println(5);
+		m_time=(EditText)findViewById(R.id.evTaskCutOffTime);
+		System.out.println(6);
+		m_message=(EditText)findViewById(R.id.evTaskContent);
+		System.out.println(7);
 		
 		//receiveMessage();
 		
 		/*����EditText��ʾ������*/
-		m_theme.setHint("����������");
-		m_time.setHint("�������ֹʱ��");
-		m_message.setHint("��������������");
+		System.out.println(8);
+		m_theme.setHint("任务主题");
+		System.out.println(9);
+		m_time.setHint("截止时间");
+		System.out.println(10);
+		m_message.setHint("任务内容");
+		System.out.println(11);
 		/*���Button����*/
-		final Button back=(Button)findViewById(R.id.btnReturnActivity);
-		final Button save=(Button)findViewById(R.id.btnSaveEditTask);
-		final Button next=(Button)findViewById(R.id.btnPersonnelArrange);
+		System.out.println(12);
+		Button back=(Button) findViewById(R.id.btnReturnActivity);
+		System.out.println(13);
+		Button save=(Button)findViewById(R.id.btnSaveEditTask);
+		System.out.println(14);
+		Button next=(Button)findViewById(R.id.btnPersonnelArrange);
+		System.out.println(15);
 		
 		/*����button�齨���¼�listener*/
+		System.out.println(16);
 		back.setOnClickListener(backOnClick);
+		System.out.println(17);
 		save.setOnClickListener(saveOnClick);
+		System.out.println(18);
 		next.setOnClickListener(nextOnClick);
+		System.out.println(19);
 	}
 	
 	/*���������һ��Activity���ݵĺ���*/
 	@SuppressWarnings("unused")
 	private void receiveMessage()
 	{
+		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);//返回数据
+		System.out.println(20);
 		Bundle bundle=this.getIntent().getExtras();
 		
 		s_department=bundle.getString("KEY_DEPARTMENT");
@@ -79,6 +88,7 @@ public class Aty_EditTask extends Activity {
 	/*��ȡ�༭���ڵ����ݣ����������*/
 	public void getMessage()
 	{
+		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");//获取数据
 		s_theme=m_theme.getText().toString();
 		s_time=m_time.getText().toString();
 		s_message=m_message.getText().toString();

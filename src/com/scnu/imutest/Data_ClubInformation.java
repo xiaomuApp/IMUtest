@@ -1,5 +1,7 @@
 package com.scnu.imutest;
 
+import java.util.ArrayList;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.CheckBox;
@@ -7,22 +9,37 @@ import android.widget.CheckBox;
 
 public class Data_ClubInformation implements Parcelable{
 
+	
+	public static final int personnel=0;//执行者身份
+	public static final int organier=1;//组织者身份
+	private int identity=personnel;//默认为执行者
 	private int id=0;
 	private String name=" ";
 	private String position=" ";
 	private String department=" ";
 	private String club=" ";
+	public ArrayList<Data_Task> data_TaskList=null; //任务列表
 	public boolean isCheck = false;
 	public CheckBox personnelCheckBox=null;
+	
 
 	public Data_ClubInformation(int id,String name, String position, String department,
-			String club) {
+			String club,int identity) {
 		super();
 		this.id=id;
 		this.name = name;
 		this.position = position;
 		this.department = department;
 		this.club = club;
+		this.identity=identity;
+	}
+
+	public int getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(int identity) {
+		this.identity = identity;
 	}
 
 	public int getId() {
