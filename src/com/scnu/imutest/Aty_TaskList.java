@@ -44,7 +44,10 @@ public class Aty_TaskList extends Activity implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Data_Task data=adapter.getItem(position);
-		data.StarActivity();
+
+		Intent iPersonnelArrange = new Intent().setClass(this, Aty_PersonnelArrange.class);
+		startActivity(iPersonnelArrange);
+		
 
 	}
 }

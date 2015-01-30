@@ -25,7 +25,7 @@ public class Aty_Main extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		findViewById(R.id.btnOrganiger).setOnClickListener(this);
 		findViewById(R.id.btnPerformer).setOnClickListener(this);
-		personnelList=new ArrayList<Data_ClubInformation>();
+		personnelList = new ArrayList<Data_ClubInformation>();
 		personnelList.add(pl1);
 		personnelList.add(pl2);
 		personnelList.add(pl3);
