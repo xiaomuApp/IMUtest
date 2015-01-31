@@ -71,7 +71,7 @@ public class Aty_EditTask extends Activity {
 	/*将Activity的数据打包并传递到下一个Activity*/
 	public void GetMessageInThisActivity()
 	{
-		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
+	/*	Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
 		data.setTaskSubject(bundle.getString(m_theme.getText().toString()));
 		data.setTaskcutofftime(bundle.getString(m_time.getText().toString()));
 		data.setTaskContent(bundle.getString(m_message.getText().toString()));
@@ -80,7 +80,10 @@ public class Aty_EditTask extends Activity {
 		bundle.putString("KEY_CLUB",data.getTaskName());
 		bundle.putString("KEY_THEME",data.getTaskSubject());
 		bundle.putString("KEY_TIME",data.getTaskcutofftime());
-		bundle.putString("KEY_MESSAGE",data.getTaskContent());
+		bundle.putString("KEY_MESSAGE",data.getTaskContent());*/
+		data = new Data_TaskDistribute(null, m_time.getText().toString(), m_message.getText().toString(), m_theme.getText().toString(), null);
+		bundle = new Bundle();
+		bundle.putSerializable("task", data);
 	}
 
 public void DisplayToast(String str)
@@ -135,8 +138,8 @@ private Button.OnClickListener nextOnClick=new Button.OnClickListener()
 					public void onClick(DialogInterface dialog, int which) {
 						Intent it=new Intent();
 						it.setClass(Aty_EditTask.this,Aty_PersonnelArrange.class);
-//						GetMessageInThisActivity();
-//						it.putExtras(bundle);
+						GetMessageInThisActivity();
+						it.putExtras(bundle);
 						startActivity(it);	
 					}
 				});

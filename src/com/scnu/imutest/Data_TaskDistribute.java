@@ -1,12 +1,17 @@
 package com.scnu.imutest;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Data_TaskDistribute implements Parcelable{
+public class Data_TaskDistribute implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//任务分配数据
 	private String taskName="";//任务名
 	private String taskcutofftime="";//暂定使用String类型，任务截止时间
@@ -60,16 +65,6 @@ public class Data_TaskDistribute implements Parcelable{
 
 	public void setTaskArrangePersonnel(ArrayList<Data_ClubInformation> taskArrangePersonnel) {
 		this.taskArrangePersonnel = taskArrangePersonnel;
-	}
-
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		//
 	}
 
 }
