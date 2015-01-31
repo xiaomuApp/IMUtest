@@ -5,57 +5,110 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Aty_PersonnelList extends Activity implements OnClickListener {
 
-	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
+	private MyAdapter adapter;
+	private ListView listViewPesonnel;
+	private static ArrayList<Data_ClubInformation> personnelList=new ArrayList<Data_ClubInformation>();
+	private static ArrayList<Data_ClubInformation> addPersonnelList=new ArrayList<Data_ClubInformation>();
 
-	@SuppressWarnings("unused")
-	private LinearLayout.LayoutParams LP_MM=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
-	private LinearLayout.LayoutParams LP_MW=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_personnel_list);
-		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
-		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
+		
+		listViewPesonnel = (ListView) findViewById(R.id.lvAllPeople);
 		
 		findViewById(R.id.btnYes).setOnClickListener(this);
 		findViewById(R.id.btnAllSelect).setOnClickListener(this);
-		for (int i = 0; i < personnelList.size(); i++) {
-			personnelList.get(i).personnelCheckBox=new CheckBox(this);
-			personnelList.get(i).personnelCheckBox.setText(personnelList.get(i).getDepartment()+personnelList.get(i).getPosition()+personnelList.get(i).getName());
-		}
-		selectPersonnel(personnelList);
-		judgeIsChecked(personnelList);
+		
+		adapter = new MyAdapter();
+		listViewPesonnel.setAdapter(adapter);
 	}
 
-	private void judgeIsChecked(ArrayList<Data_ClubInformation> personnelList2) {
-		for (int i = 0; i < personnelList2.size(); i++) {
+	private class MyAdapter extends BaseAdapter{
 
-			if (personnelList2.get(i).personnelCheckBox.isChecked()) {
-				personnelList2.get(i).isCheck=true;
-			}else {
-				personnelList2.get(i).isCheck=false;
+		public MyAdapter(){
+				personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
+				
+		}
+		
+		public void checkAll(){
+			for(Data_ClubInformation msg:personnelList){
+				if(msg.isCheck == false){
+					msg.isCheck = true;
+					addPersonnelList.add(msg);
+				}
 			}
+			notifyDataSetChanged();
 		}
-	}
+		@Override
+		public int getCount() {
+			return personnelList.size();
+		}
 
-	private void selectPersonnel(ArrayList<Data_ClubInformation> personnelList2) {
-		for (int i = 0; i < personnelList2.size(); i++) {
-			LinearLayout lllist=(LinearLayout) findViewById(R.id.lllist);
-			CheckBox cb=personnelList2.get(i).personnelCheckBox;
-			cb.setLayoutParams(LP_MW);
-			cb.setText(personnelList2.get(i).getDepartment()+personnelList2.get(i).getPosition()+personnelList2.get(i).getName());
-			personnelList2.get(i).personnelCheckBox=cb;
-			lllist.addView(cb, LP_MW);
+		@Override
+		public ArrayList<Data_ClubInformation> getItem(int position) {
+			return personnelList;
 		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ViewHolder viewHolder;  
+			if(convertView == null){  
+				LayoutInflater inflater = LayoutInflater.from(Aty_PersonnelList.this);  
+				convertView = inflater.inflate(R.layout.list_cell_people_list, null);  
+				viewHolder = new ViewHolder();  
+				viewHolder.textView = (TextView) convertView.findViewById(R.id.tvPeople);
+				viewHolder.checkBox = (CheckBox)convertView.findViewById(R.id.checkBox);  
+				convertView.setTag(viewHolder);  
+			}else{  
+				viewHolder = (ViewHolder)convertView.getTag();  
+			}  
+			final Data_ClubInformation msg = personnelList.get(position);  
+			viewHolder.textView.setText(msg.toString());  
+			viewHolder.checkBox.setChecked(msg.isCheck);  
+			
+
+			viewHolder.checkBox.setOnClickListener(new OnClickListener() {  
+
+				@Override  
+				public void onClick(View v) {  
+					if(msg.isCheck){  
+						msg.isCheck = false; 
+						addPersonnelList.remove(msg);
+					}else{  
+						msg.isCheck = true;  
+						addPersonnelList.add(msg);
+					}  
+
+				}  
+			});  
+			return convertView;
+		}
+		
 	}
+	
+	private class ViewHolder{  
+		TextView textView;
+		CheckBox checkBox;  
+	}  
 
 	@Override
 	public void onClick(View v) {
@@ -73,18 +126,17 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 	}
 
 	private void personnelAllSelect() {
-		for (int i = 0; i < personnelList.size(); i++) {
-			personnelList.get(i).personnelCheckBox.setChecked(true);
-			personnelList.get(i).isCheck=true;
-		}
+		adapter.checkAll();
 	}
 
 	private void finishPersonnelChoice() {
 
 		Toast.makeText(this, "跳转至人员安排", Toast.LENGTH_SHORT).show();
-		Intent iPersonnelPlacement=new Intent(Aty_PersonnelList.this, Aty_PersonnelArrange.class);
-		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
-		startActivity(iPersonnelPlacement);
+		Intent iPersonnelPlacement=new Intent();
+		Bundle data = new Bundle();
+		data.putParcelableArrayList("add", addPersonnelList);
+		iPersonnelPlacement.putExtras(data);
+		setResult(0, iPersonnelPlacement);
 		finish();
 	}
 }

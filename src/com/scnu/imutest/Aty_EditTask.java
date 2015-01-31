@@ -106,8 +106,8 @@ private Button.OnClickListener saveOnClick=new Button.OnClickListener()
 	{
 
 		Intent intent=new Intent();
-		GetMessageInThisActivity();
-	    intent.putExtras(bundle);
+//		GetMessageInThisActivity();
+//	    intent.putExtras(bundle);
 	    setResult(RESULT_OK,intent);
 		DisplayToast("保存任务信息成功");
 	}
@@ -135,8 +135,8 @@ private Button.OnClickListener nextOnClick=new Button.OnClickListener()
 					public void onClick(DialogInterface dialog, int which) {
 						Intent it=new Intent();
 						it.setClass(Aty_EditTask.this,Aty_PersonnelArrange.class);
-						GetMessageInThisActivity();
-						it.putExtras(bundle);
+//						GetMessageInThisActivity();
+//						it.putExtras(bundle);
 						startActivity(it);	
 					}
 				});
