@@ -18,7 +18,9 @@ public class Aty_PerformerMyTask extends Activity implements OnClickListener, On
 	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
 	
 	private ListView lv;
-	private ArrayAdapter<String>  adapter;
+	private ArrayAdapter<Data_TaskDistribute>  adapter;
+	private ArrayList<Data_TaskDistribute> TaskContent=Aty_Main.taskList;
+	private int Couter=TaskContent.size();
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +29,13 @@ public class Aty_PerformerMyTask extends Activity implements OnClickListener, On
 		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
 		Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
         
-        adapter=new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
+        adapter=new ArrayAdapter<Data_TaskDistribute>(this, android.R.layout.simple_expandable_list_item_1);
         lv=(ListView)findViewById(R.id.lv);
         lv.setAdapter(adapter);
-        adapter.add("����һ");
-        adapter.add("�����");
-        adapter.add("������");
-        adapter.add("������");
-        adapter.add("������");
-        adapter.add("������");
+        for(int t=0;t<Couter;t++)
+        {
+        	adapter.add(TaskContent.get(t));
+        }
         
         lv.setOnItemClickListener(this);
     }
@@ -46,9 +46,11 @@ public class Aty_PerformerMyTask extends Activity implements OnClickListener, On
 		
 		Intent iPerformerActivityList=new Intent(Aty_PerformerMyTask.this,Aty_PerformerTaskList.class);
 		Bundle value=new Bundle();
-		value.putString("id", "任务1");
-		value.putString("context", "女生节搬桌子");
-		value.putString("time", "2015年2月27日");
+		Data_TaskDistribute data=adapter.getItem(position);
+		value.putString("id", data.getTaskName());
+		value.putString("context", data.getTaskContent());
+		value.putString("time", data.getTaskcutofftime());
+		//value.putString("theme", data.getTaskSubject());
 		iPerformerActivityList.putExtras(value);
 		startActivity(iPerformerActivityList);
 	}

@@ -9,47 +9,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class Aty_EditTask extends Activity {
-	
-
-	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
-
 	/*定义变量*/
 	private EditText m_theme;    //定义主题输入框变量
 	private EditText m_time;     //定义截止时间输入框变量
 	private EditText m_message;  //定义内容输入框变量
 	Data_TaskDistribute data;     //定义任务的数据变量
 	private Bundle bundle;         //定义Activity间传递数据的打包变量
+	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
 		setContentView(R.layout.activity_edit_task);
 		/*获得EditText对象*/
 		m_theme=(EditText)findViewById(R.id.evTaskTheme);
 		m_time=(EditText)findViewById(R.id.evTaskDealtime);
 		m_message=(EditText)findViewById(R.id.evTaskContent);
-		
-		
-		/*设置EditText显示的文字*/
-		m_theme.setHint("请输入活动主题");
-		m_time.setHint("请输入截止时间");
-		m_message.setHint("请输入任务内容");
-		System.out.println(11);
-		/*获得Button对象*/
-		final Button buttonReturnActivityList=(Button)findViewById(R.id.btnReturnActivity);
-		final Button buttonSaveAssignmentData=(Button)findViewById(R.id.btnSaveEditTask);
-		final Button buttonGoPeopleArrange=(Button)findViewById(R.id.btnPersonnelArrange);
-		
-		/*设置事件监听*/
-		buttonReturnActivityList.setOnClickListener(backOnClick);
-		buttonSaveAssignmentData.setOnClickListener(saveOnClick);
-		buttonGoPeopleArrange.setOnClickListener(nextOnClick);
+	
+		/*获得Button对象监听事件*/
+		findViewById(R.id.btnReturnActivity).setOnClickListener(backOnClick);
+		findViewById(R.id.btnSaveEditTask).setOnClickListener(saveOnClick);
+		findViewById(R.id.btnPersonnelArrange).setOnClickListener(nextOnClick);
 	}
 
 	/*获取前一个Activity传递过来的数据*/
@@ -57,35 +45,18 @@ public class Aty_EditTask extends Activity {
 	{
 		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
 		Bundle bundle=this.getIntent().getExtras();
-		
-		data.setTaskName(bundle.getString("KEY_CLUB"));
-		data.setTaskSubject(bundle.getString("KEY_THEME"));
-		data.setTaskcutofftime(bundle.getString("KEY_TIME"));
-		data.setTaskContent(bundle.getString("KEY_MESSAGE"));
-		
-		m_theme.setText(data.getTaskName());
-		m_time.setText(data.getTaskcutofftime());
-		m_message.setText(data.getTaskContent());
+		m_theme.setText(Integer.toString(bundle.getInt("position")));
 	}
 
 	/*将Activity的数据打包并传递到下一个Activity*/
 	public void GetMessageInThisActivity()
 	{
-	/*	Aty_Main.bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
-		data.setTaskSubject(bundle.getString(m_theme.getText().toString()));
-		data.setTaskcutofftime(bundle.getString(m_time.getText().toString()));
-		data.setTaskContent(bundle.getString(m_message.getText().toString()));
-		
-		bundle=new Bundle();
-		bundle.putString("KEY_CLUB",data.getTaskName());
-		bundle.putString("KEY_THEME",data.getTaskSubject());
-		bundle.putString("KEY_TIME",data.getTaskcutofftime());
-		bundle.putString("KEY_MESSAGE",data.getTaskContent());*/
 		data = new Data_TaskDistribute(null, m_time.getText().toString(), m_message.getText().toString(), m_theme.getText().toString(), null);
 		bundle = new Bundle();
 		bundle.putSerializable("task", data);
 	}
 
+/*提醒已保存显示函数*/
 public void DisplayToast(String str)
 {
 	Toast toast=Toast.makeText(this,str,Toast.LENGTH_SHORT);
