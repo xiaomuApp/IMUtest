@@ -59,6 +59,9 @@ public class Data_TaskDistribute implements Serializable{
 		this.taskSubject = taskSubject;
 	}
 
+	public String toString(){
+		return getTaskName();
+	}
 	public ArrayList<Data_ClubInformation> getTaskArrangePersonnel() {
 		return taskArrangePersonnel;
 	}
