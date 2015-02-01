@@ -126,13 +126,14 @@ private Button.OnClickListener nextOnClick=new Button.OnClickListener()
 		nextDlg.setMessage("是否跳转到人员分配界面？");
 		nextDlg.setIcon(android.R.drawable.ic_dialog_info);
 		nextDlg.setCancelable(false);
-		nextDlg.setPositiveButton("否",
+		nextDlg.setNegativeButton("否",
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
+						finish();
 					}
 				});
-		nextDlg.setNegativeButton("是", 
+		nextDlg.setPositiveButton("是", 
 				new DialogInterface.OnClickListener() {	
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -141,6 +142,7 @@ private Button.OnClickListener nextOnClick=new Button.OnClickListener()
 						GetMessageInThisActivity();
 						it.putExtras(bundle);
 						startActivity(it);	
+						finish();
 					}
 				});
 		nextDlg.show();

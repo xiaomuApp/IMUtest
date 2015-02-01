@@ -26,5 +26,6 @@
     <string name="btn_people_arrange">人员安排</string>
     <string name="text_organier">组织者</string>
     <string name="text_performer">执行者</string>
+    <string name="text_allSelect">全选</string>
 
 </resources>

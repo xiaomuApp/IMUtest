@@ -4,33 +4,55 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:background="@color/topic_background_darkblue"
+        android:padding="@dimen/topic_margin" >
+
+        <ImageButton
+            android:id="@+id/btnReturnPeopleArrange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/topic_background_darkblue"
+            android:contentDescription="@string/btn_return"
+            android:onClick="returnLast"
+            android:src="@drawable/btn_return" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text=" " />
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/title_activity_list_people"
+            android:textColor="@color/topic_font"
+            android:textSize="@dimen/topic_font" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="人员名单" />
-
-        <Button
+        <ImageButton
             android:id="@+id/btnYes"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            android:text="完成" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:background="@color/topic_background_darkblue"
+            android:contentDescription="@string/btn_commit"
+            android:onClick="commitPeopleList"
+            android:src="@drawable/btn_add_commit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btnYes"
+            android:layout_alignRight="@+id/btnYes"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/btn_add"
+            android:textColor="@color/topic_background_darkblue"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/lllist"
@@ -48,7 +70,7 @@
             android:id="@+id/btnAllSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="全选" />
+            android:text="@string/text_allSelect" />
     </LinearLayout>
     <ListView
         android:id="@+id/lvAllPeople"
