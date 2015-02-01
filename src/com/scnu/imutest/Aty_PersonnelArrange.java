@@ -59,6 +59,8 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 
 		switch(arg1){
 		case 0:
+			break;
+		case 1:
 			adapter.clear();
 			arrangePeople = arg2.getExtras().getParcelableArrayList("add");
 			for(Data_ClubInformation d:arrangePeople){

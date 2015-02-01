@@ -29,8 +29,9 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 		
 		listViewPesonnel = (ListView) findViewById(R.id.lvAllPeople);
 		
-		findViewById(R.id.btnYes).setOnClickListener(this);
+		findViewById(R.id.btnCommit).setOnClickListener(this);
 		findViewById(R.id.btnAllSelect).setOnClickListener(this);
+		findViewById(R.id.btnReturnPeopleArrange).setOnClickListener(this);
 		
 		adapter = new MyAdapter();
 		listViewPesonnel.setAdapter(adapter);
@@ -113,11 +114,14 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btnYes:
+		case R.id.btnCommit:
 			finishPersonnelChoice();
 			break;
 		case R.id.btnAllSelect:
 			personnelAllSelect();
+			break;
+		case R.id.btnReturnPeopleArrange:
+			returnPeopleArrange();
 			break;
 
 		default:
@@ -136,7 +140,12 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 		Bundle data = new Bundle();
 		data.putParcelableArrayList("add", addPersonnelList);
 		iPersonnelPlacement.putExtras(data);
-		setResult(0, iPersonnelPlacement);
+		setResult(1, iPersonnelPlacement);
+		finish();
+	}
+	
+	private void returnPeopleArrange(){
+		setResult(0);
 		finish();
 	}
 }

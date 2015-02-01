@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="topic_blue">#2680EF</color>
-    <color name="btnBackGround">#ffffff</color>
-    <color name="tv_topic">#F9FAFC</color>
-    <color name="tv_background">#E0E0E0</color>
-    <color name="blue">#2680EF</color>
-    <color name="black">#000000</color>
-    <color name="gray">#999999</color>
-    <color name="text_green">#99cc33</color>
-    <color name="text_red">#ff0000</color>
-    <color name="white">#ffffff</color>
-    <color name="topic_background_darkblue">#2680EF</color>
-    <color name="topic_font">#ffffff</color>
+    <color name="title_background">#2680EF</color>
+    <color name="front_green">#99cc33</color>
+    <color name="front_red">#ff0000</color>
+    <color name="front_title">#ffffff</color>
     <color name="list_cell_background_darkgrey">#999999</color>
     <color name="list_cell_font_greyblack">#ffffff</color>
+    <color name="front_task_list">#5d5d5d</color>
+    <color name="front_edit_task">#656565</color>
+    <color name="front_people_arrange">#656565</color>
+    <color name="background_grey">#e0e0e0</color>
+    <color name="background_lightgrey">#eef3f6</color>
+    <color name="front_people_list">#7e9096</color>
 
 </resources>

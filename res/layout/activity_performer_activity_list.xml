@@ -6,16 +6,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/topic_background_darkblue"
-        android:orientation="horizontal" >
+        android:layout_height="@dimen/title_height"
+        android:background="@color/title_background" >
 
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:background="@color/topic_background_darkblue"
+            android:background="@color/title_background"
             android:src="@drawable/btn_return"
             android:text="返回" />
 
@@ -25,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            style="@style/Front_Title"
             android:text="活动列表" />
     </RelativeLayout>
 

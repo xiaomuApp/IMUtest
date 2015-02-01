@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -16,5 +16,24 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+<!-- 主题字体的样式 -->
+    <style name="Front_Title">
+        <item name="android:textColor">@color/front_title</item>
+        <item name="android:textSize">@dimen/front_topic</item>
+    </style>
+<!-- 任务列表项的字体 -->
+    <style name="Front_TaskList_ListCell">
+        <item name="android:textColor">@color/front_task_list</item>
+        <item name="android:textSize">@dimen/front_task_list_cell</item>
+    </style>
+<!-- 编辑任务的字体样式 -->    
+    <style name="Front_EditTask">
+        <item name="android:textColor">@color/front_edit_task</item>
+        <item name="android:textSize">@dimen/front_edit_task</item>
+    </style>
+<!-- 人员安排字体样式 -->    
+    <style name="Front_PeopleArrange">
+        <item name="android:textColor">@color/front_people_arrange</item>
+        <item name="android:textSize">@dimen/front_people_arrange</item>
+    </style>
 </resources>

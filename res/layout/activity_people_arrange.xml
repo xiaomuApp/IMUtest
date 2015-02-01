@@ -7,89 +7,92 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/topic_background_darkblue"
-        android:padding="@dimen/topic_margin" >
+        android:layout_height="@dimen/title_height"
+        android:background="@color/title_background" >
 
         <TextView
+            style="@style/Front_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/topic_font"
-            android:textSize="@dimen/topic_font"
-            android:text="@string/title_activity_people_arrange" />
+            android:text="@string/title_activity_people_arrange"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ImageButton
             android:id="@+id/btnReturnEditTask"
-            android:contentDescription="@string/btn_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="@color/topic_background_darkblue"
-            android:src="@drawable/btn_return"
-            android:onClick="returnLast" />
+            android:background="@color/title_background"
+            android:contentDescription="@string/btn_return"
+            android:onClick="returnLast"
+            android:src="@drawable/btn_return" />
 
         <ImageButton
             android:id="@+id/btnAddPeople"
-            android:contentDescription="@string/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@color/topic_background_darkblue"
+            android:background="@color/title_background"
+            android:contentDescription="@string/btn_add"
+            android:onClick="startListPeople"
             android:src="@drawable/btn_add"
-            android:textColor="@color/topic_background_darkblue"
-            android:onClick="startListPeople" />
+            android:textColor="@color/title_background" />
     </RelativeLayout>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dip"
-        android:padding="@dimen/list_base_margin" >
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/list_base_margin"
+        android:paddingRight="@dimen/list_base_margin"
+        android:paddingTop="@dimen/list_base_margin" >
 
         <TextView
             android:id="@+id/tvTaskTheme"
+            style="@style/Front_EditTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/list_cell_background_darkgrey"
+            android:background="@drawable/corner_round_all"
             android:hint="@string/hint_task_theme"
-            android:textColor="@color/list_cell_font_greyblack"
-            android:textSize="@dimen/task_theme_font"
-            android:lines="2" />
-    </ScrollView>
+            android:lines="1"
+            android:padding="@dimen/list_base_margin" />
+    </LinearLayout>
 
-    <ListView
-        android:id="@+id/lvPeople"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:paddingBottom="@dimen/list_base_margin"
-        android:paddingLeft="@dimen/list_base_margin"
-        android:paddingRight="@dimen/list_base_margin" >
-    </ListView>
+        android:layout_weight="1"
+        android:padding="@dimen/list_base_margin" >
+
+        <ListView
+            android:id="@+id/lvPeople"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/corner_round_all" >
+        </ListView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/list_base_margin"
         android:paddingLeft="@dimen/list_base_margin"
-        android:paddingRight="@dimen/list_base_margin"
-        android:paddingBottom="@dimen/list_base_margin" >
+        android:paddingRight="@dimen/list_base_margin" >
 
         <Button
             android:id="@+id/btnRelease"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/topic_background_darkblue"
-            android:text="@string/btn_release"
-            android:textSize="@dimen/btn_release_font"
+            android:background="@color/title_background"
+            android:onClick="btnRelease"
             android:padding="@dimen/btn_release_margin"
-            android:textColor="@color/topic_font"
-            android:onClick="btnRelease" />
+            android:text="@string/btn_release"
+            android:textColor="@color/front_title"
+            android:textSize="@dimen/front_btn" />
     </LinearLayout>
 
 </LinearLayout>

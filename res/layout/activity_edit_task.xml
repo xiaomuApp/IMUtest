@@ -6,27 +6,26 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/topic_blue"
-        android:padding="@dimen/topic_margin" >
+        android:layout_height="@dimen/title_height"
+        android:background="@color/title_background" >
+
+        <TextView
+            style="@style/Front_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/title_activity_edit_task" />
 
         <Button
             android:id="@+id/btnReturnActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/btn_return"
-            android:onClick="returnLast"
-            android:background="@drawable/btn_return"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:text="@string/title_activity_edit_task"
-            android:textColor="@color/topic_font"
-            android:textSize="@dimen/topic_font" />
+            android:background="@drawable/btn_return"
+            android:contentDescription="@string/btn_return"
+            android:onClick="returnLast" />
     </RelativeLayout>
 
     <LinearLayout
@@ -36,61 +35,84 @@
         android:orientation="vertical"
         android:padding="@dimen/list_base_margin" >
 
-        <EditText
-            android:id="@+id/evTaskTheme"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_task_theme"
-            android:lines="3"
-            android:paddingBottom="@dimen/list_base_margin" />
+            android:background="@drawable/corner_round_topright_topleft" >
 
-        <EditText
-            android:id="@+id/evTaskDealtime"
+            <EditText
+                android:id="@+id/evTaskTheme"
+                style="@style/Front_EditTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_task_theme"
+                android:lines="3" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_dead_time"
-            android:lines="1"
-            android:paddingBottom="@dimen/list_base_margin" />
+            android:paddingTop="@dimen/editview_margin"
+            android:paddingBottom="@dimen/editview_margin" >
 
-        <EditText
-            android:id="@+id/evTaskContent"
+            <EditText
+                android:id="@+id/evTaskDealtime"
+                style="@style/Front_EditTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background_grey"
+                android:hint="@string/hint_dead_time"
+                android:lines="1" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="@string/hint_task_context" />
+            android:background="@drawable/corner_round_bottomright_bottomleft" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/btn_release_margin" >
-
-            <Button
-                android:id="@+id/btnSaveEditTask"
+            <EditText
+                android:id="@+id/evTaskContent"
+                style="@style/Front_EditTask"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/topic_background_darkblue"
-                android:padding="@dimen/btn_release_margin"
-                android:text="@string/btn_save_task"
-                android:textColor="@color/topic_font"
-                android:textSize="@dimen/btn_release_font" 
-                android:onClick="btnSave"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/btn_release_margin" >
-
-            <Button
-                android:id="@+id/btnPersonnelArrange"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/topic_background_darkblue"
-                android:padding="@dimen/btn_release_margin"
-                android:text="@string/btn_people_arrange"
-                android:textColor="@color/topic_font"
-                android:textSize="@dimen/btn_release_font"
-                android:onClick="btnPeopleArrange" />
+                android:layout_height="match_parent"
+                android:hint="@string/hint_task_context" />
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/btn_release_margin"
+        android:paddingRight="@dimen/btn_release_margin" >
+
+        <Button
+            android:id="@+id/btnSaveEditTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/title_background"
+            android:onClick="btnSave"
+            android:padding="@dimen/btn_release_margin"
+            android:text="@string/btn_save_task"
+            android:textColor="@color/front_title"
+            android:textSize="@dimen/front_btn" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/btn_release_margin" >
+
+        <Button
+            android:id="@+id/btnPersonnelArrange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/title_background"
+            android:onClick="btnPeopleArrange"
+            android:padding="@dimen/btn_release_margin"
+            android:text="@string/btn_people_arrange"
+            android:textColor="@color/front_title"
+            android:textSize="@dimen/front_btn" />
+    </LinearLayout>
+
 </LinearLayout>
