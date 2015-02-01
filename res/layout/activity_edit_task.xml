@@ -40,15 +40,26 @@
             android:id="@+id/evTaskTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_task_theme"
-            android:lines="3"
+            android:gravity="top"
+            android:background="@color/tv_background"
+            android:text="@string/hint_task_theme"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/btn_release_font"
+            android:lines="2"
             android:paddingBottom="@dimen/list_base_margin" />
+        
+        <requestFocus />
 
         <EditText
             android:id="@+id/evTaskDealtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_dead_time"
+            android:gravity="top"
+            android:background="@color/tv_background"
+            android:layout_marginTop="3dp"
+            android:text="@string/hint_dead_time"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/btn_release_font"
             android:lines="1"
             android:paddingBottom="@dimen/list_base_margin" />
 
@@ -57,7 +68,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="@string/hint_task_context" />
+            android:gravity="top"
+            android:background="@color/tv_background"
+            android:layout_marginTop="3dp"
+            android:text="@string/hint_task_context" 
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/btn_release_font"/>
 
         <LinearLayout
             android:layout_width="match_parent"

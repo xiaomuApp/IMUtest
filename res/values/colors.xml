@@ -10,6 +10,7 @@
     <color name="gray">#999999</color>
     <color name="text_green">#99cc33</color>
     <color name="text_red">#ff0000</color>
+    <color name="text_grey">#5D5D5D</color>
     <color name="white">#ffffff</color>
     <color name="topic_background_darkblue">#2680EF</color>
     <color name="topic_font">#ffffff</color>
