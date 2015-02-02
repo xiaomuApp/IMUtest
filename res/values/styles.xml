@@ -31,9 +31,14 @@
         <item name="android:textColor">@color/front_edit_task</item>
         <item name="android:textSize">@dimen/front_edit_task</item>
     </style>
-<!-- 人员安排字体样式 -->    
-    <style name="Front_PeopleArrange">
-        <item name="android:textColor">@color/front_people_arrange</item>
-        <item name="android:textSize">@dimen/front_people_arrange</item>
+<!-- 人员安排大字体样式 -->    
+    <style name="Front_PeopleArrange_Grey">
+        <item name="android:textColor">@color/front_people_arrange_grey</item>
+        <item name="android:textSize">@dimen/front_people_arrange_large</item>
     </style>
+<!-- 人员安排小字体样式 -->
+	<style name="Front_PeopleArrange_Green">
+	    <item name="android:textColor">@color/front_green</item>
+	    <item name="android:textSize">@dimen/front_people_anrrange_small</item>
+	</style>
 </resources>

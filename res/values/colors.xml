@@ -9,7 +9,7 @@
     <color name="list_cell_font_greyblack">#ffffff</color>
     <color name="front_task_list">#5d5d5d</color>
     <color name="front_edit_task">#656565</color>
-    <color name="front_people_arrange">#656565</color>
+    <color name="front_people_arrange_grey">#656565</color>
     <color name="background_grey">#e0e0e0</color>
     <color name="background_lightgrey">#eef3f6</color>
     <color name="front_people_list">#7e9096</color>

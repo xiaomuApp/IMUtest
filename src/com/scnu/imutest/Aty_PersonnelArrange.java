@@ -80,8 +80,7 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 
 /*返回编辑任务*/
 	public void returnLast(View view){
-		Intent intent = new Intent(this, Aty_EditTask.class);
-		startActivity(intent);
+		finish();
 
 	}
 /*发布数据，服务器可以从这里获得，任务和人员安排信息*/

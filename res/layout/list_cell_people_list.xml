@@ -3,20 +3,45 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:padding="@dimen/list_base_margin" >
 
+    <LinearLayout
+        android:layout_width="@dimen/list_cell_personnel_list_height"
+        android:layout_height="@dimen/list_cell_personnel_list_height"
+        android:background="@drawable/circle" >
 
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvNameDepartment"
+            style="@style/Front_PeopleArrange_Grey"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4" />
+
+        <TextView
+            android:id="@+id/tvPosition"
+            style="@style/Front_PeopleArrange_Green"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3" />
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView 
-        android:id="@+id/tvPeople"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/Front_PeopleArrange"
-        android:layout_weight="1"/>
+        android:layout_gravity="center_vertical" />
 
-    
 </LinearLayout>

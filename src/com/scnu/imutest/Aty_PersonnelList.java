@@ -3,13 +3,13 @@ package com.scnu.imutest;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,61 +32,36 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 		findViewById(R.id.btnCommit).setOnClickListener(this);
 		findViewById(R.id.btnAllSelect).setOnClickListener(this);
 		findViewById(R.id.btnReturnPeopleArrange).setOnClickListener(this);
-		
-		adapter = new MyAdapter();
+		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
+		adapter = new MyAdapter(this, R.layout.list_cell_people_list, personnelList);
 		listViewPesonnel.setAdapter(adapter);
 	}
 
-	private class MyAdapter extends BaseAdapter{
-
-		public MyAdapter(){
-				personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
-				
-		}
+	public class MyAdapter extends Adapter_PersonnelList<Data_ClubInformation> {
 		
-		public void checkAll(){
-			for(Data_ClubInformation msg:personnelList){
-				if(msg.isCheck == false){
-					msg.isCheck = true;
-					addPersonnelList.add(msg);
-				}
-			}
-			notifyDataSetChanged();
-		}
-		@Override
-		public int getCount() {
-			return personnelList.size();
+		public MyAdapter(Context context, int listCellId,
+				ArrayList<Data_ClubInformation> list) {
+			super(context, listCellId, list);
 		}
 
-		@Override
-		public ArrayList<Data_ClubInformation> getItem(int position) {
-			return personnelList;
-		}
-
-		@Override
-		public long getItemId(int position) {
-			return position;
-		}
-
-		
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder viewHolder;  
-			if(convertView == null){  
-				LayoutInflater inflater = LayoutInflater.from(Aty_PersonnelList.this);  
-				convertView = inflater.inflate(R.layout.list_cell_people_list, null);  
+			if(convertView == null){ 
+				convertView=LayoutInflater.from(getContext()).inflate(listCellId, null);
 				viewHolder = new ViewHolder();  
-				viewHolder.textView = (TextView) convertView.findViewById(R.id.tvPeople);
+				viewHolder.tvNameDepartment = (TextView) convertView.findViewById(R.id.tvNameDepartment);
+				viewHolder.tvPosition = (TextView) convertView.findViewById(R.id.tvPosition);
 				viewHolder.checkBox = (CheckBox)convertView.findViewById(R.id.checkBox);  
 				convertView.setTag(viewHolder);  
 			}else{  
 				viewHolder = (ViewHolder)convertView.getTag();  
 			}  
 			final Data_ClubInformation msg = personnelList.get(position);  
-			viewHolder.textView.setText(msg.toString());  
+			viewHolder.tvNameDepartment.setText(msg.getName()+"("+msg.getDepartment()+")"); 
+			viewHolder.tvPosition.setText("职位："+msg.getPosition());
 			viewHolder.checkBox.setChecked(msg.isCheck);  
 			
-
 			viewHolder.checkBox.setOnClickListener(new OnClickListener() {  
 
 				@Override  
@@ -100,14 +75,25 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 					}  
 
 				}  
-			});  
+			});
 			return convertView;
 		}
 		
-	}
+		public void checkAll(){
+			for(Data_ClubInformation msg:personnelList){
+				if(msg.isCheck == false){
+					msg.isCheck = true;
+					addPersonnelList.add(msg);
+				}
+			}
+			notifyDataSetChanged();
+		}
+		
+	};
 	
 	private class ViewHolder{  
-		TextView textView;
+		TextView tvNameDepartment;
+		TextView tvPosition;
 		CheckBox checkBox;  
 	}  
 
