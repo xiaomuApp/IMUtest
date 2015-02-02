@@ -33,6 +33,8 @@ public class Aty_EditTask extends Activity {
 		m_theme=(EditText)findViewById(R.id.evTaskTheme);
 		m_time=(EditText)findViewById(R.id.evTaskDealtime);
 		m_message=(EditText)findViewById(R.id.evTaskContent);
+		
+		GetMessageFromAty_TaskList();
 	
 		/*获得Button对象监听事件*/
 		findViewById(R.id.btnReturnActivity).setOnClickListener(backOnClick);
@@ -41,7 +43,7 @@ public class Aty_EditTask extends Activity {
 	}
 
 	/*获取前一个Activity传递过来的数据*/
-	public void GetMessageFromAty_Activity()
+	public void GetMessageFromAty_TaskList()
 	{
 		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
 		Bundle bundle=this.getIntent().getExtras();
@@ -80,8 +82,8 @@ private Button.OnClickListener saveOnClick=new Button.OnClickListener()
 	{
 
 		Intent intent=new Intent();
-//		GetMessageInThisActivity();
-//	    intent.putExtras(bundle);
+		GetMessageInThisActivity();
+	    intent.putExtras(bundle);
 	    setResult(RESULT_OK,intent);
 		DisplayToast("保存任务信息成功");
 	}
@@ -101,7 +103,6 @@ private Button.OnClickListener nextOnClick=new Button.OnClickListener()
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						finish();
 					}
 				});
 		nextDlg.setPositiveButton("是", 
@@ -112,7 +113,8 @@ private Button.OnClickListener nextOnClick=new Button.OnClickListener()
 						it.setClass(Aty_EditTask.this,Aty_PersonnelArrange.class);
 						GetMessageInThisActivity();
 						it.putExtras(bundle);
-						startActivity(it);	
+						startActivity(it);
+						setResult(RESULT_OK,it);
 						finish();
 					}
 				});

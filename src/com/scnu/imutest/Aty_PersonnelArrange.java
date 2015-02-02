@@ -32,7 +32,7 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 /*从编辑任务获取主题、截止时间、任务内容、活动名	*/	
 		taskDistribute = (Data_TaskDistribute) getIntent().getExtras().getSerializable("task");
 		m_theme = (TextView) findViewById(R.id.tvTaskTheme);
-		m_theme.setText(taskDistribute.getTaskSubject());
+		m_theme.setText("任务主题："+taskDistribute.getTaskSubject());
 		
 		adapter = new ArrayAdapter<Data_ClubInformation>(this, R.layout.list_cell_people_arrange);
 		lv = (ListView) findViewById(R.id.lvPeople);

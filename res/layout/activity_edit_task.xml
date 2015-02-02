@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -35,49 +36,91 @@
         android:orientation="vertical"
         android:padding="@dimen/list_base_margin" >
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corner_round_topright_topleft" >
+            android:layout_height="wrap_content" 
+            android:background="@drawable/corner_round_topright_topleft">
+            
+        <EditText
+              android:id="@+id/tvTaskTheme"
+              style="@style/Front_EditTask"
+              android:layout_width="match_parent"
+              android:background="@null"
+              android:layout_height="wrap_content"
+              android:text="@string/hint_task_theme"
+              android:lines="2"
+              android:editable="false" />
 
-            <EditText
-                android:id="@+id/evTaskTheme"
-                style="@style/Front_EditTask"
+        <EditText
+            android:id="@+id/evTaskTheme"
+            android:layout_width="295dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@null"
+            android:textSize="@dimen/front_edit_task"
+            android:lines="2" >
+
+        </EditText>
+
+        </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_task_theme"
-                android:lines="3" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/editview_margin"
-            android:paddingTop="@dimen/editview_margin" >
-
+                android:paddingBottom="@dimen/editview_margin"
+                android:paddingTop="@dimen/editview_margin"  >
+                
             <EditText
-                android:id="@+id/evTaskDealtime"
+                android:id="@+id/tvTaskDealtime"
                 style="@style/Front_EditTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/background_grey"
-                android:hint="@string/hint_dead_time"
-                android:lines="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/corner_round_bottomright_bottomleft" >
+                android:editable="false"
+                android:text="@string/hint_dead_time"
+                android:lines="2" />
 
             <EditText
-                android:id="@+id/evTaskContent"
-                style="@style/Front_EditTask"
-                android:layout_width="match_parent"
+                android:id="@+id/evTaskDealtime"
+                android:layout_width="250dp"
                 android:layout_height="match_parent"
-                android:hint="@string/hint_task_context" />
-        </LinearLayout>
+                android:layout_gravity="right"
+                android:background="@null"
+                android:textSize="@dimen/front_edit_task"
+                android:lines="2" >
+
+            </EditText>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" 
+                android:background="@drawable/corner_round_bottomright_bottomleft">
+
+                <EditText
+                    android:id="@+id/tvTaskContent"
+                    style="@style/Front_EditTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:lines="2" 
+                    android:editable="false"
+                    android:text="@string/hint_task_context">
+                </EditText>
+
+               <EditText
+                    android:id="@+id/evTaskContent"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:textSize="@dimen/front_edit_task"
+                    android:lines="7" >
+                </EditText>
+
+            </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
