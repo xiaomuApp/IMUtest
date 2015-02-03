@@ -29,88 +29,98 @@
             android:onClick="returnLast" />
     </RelativeLayout>
 
-    <LinearLayout
+      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:padding="@dimen/list_base_margin" >
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:background="@drawable/corner_round_topright_topleft_grey">
-            
-        <EditText
-              android:id="@+id/tvTaskTheme"
-              style="@style/Front_EditTask"
+          <LinearLayout
               android:layout_width="match_parent"
-              android:background="@null"
-              android:layout_height="wrap_content"
-              android:text="@string/hint_task_theme"
-              android:lines="2"
-              android:editable="false" />
+              android:layout_height="wrap_content" 
+              android:background="@drawable/corner_round_topright_topleft_grey">
 
-        <EditText
-            android:id="@+id/evTaskTheme"
-            android:layout_width="295dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:background="@null"
-            android:textSize="@dimen/front_edit_task"
-            android:lines="2" >
-
-        </EditText>
-
-        </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/editview_margin"
-                android:paddingTop="@dimen/editview_margin"  >
-                
-            <EditText
-                android:id="@+id/tvTaskDealtime"
+              <EditText
+                  android:id="@+id/tvTaskTheme"
                 style="@style/Front_EditTask"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background_grey"
-                android:editable="false"
-                android:text="@string/hint_dead_time"
-                android:lines="2" />
-
-            <EditText
-                android:id="@+id/evTaskDealtime"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:gravity="center"
                 android:background="@null"
-                android:textSize="@dimen/front_edit_task"
-                android:lines="2" >
-
-            </EditText>
-
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" 
-                android:background="@drawable/corner_round_bottomright_bottomleft_grey">
+                android:text="@string/hint_task_theme"
+                android:lines="2"
+                android:editable="false">
+              </EditText>
 
-                <EditText
+              <EditText
+                  android:id="@+id/evTaskTheme"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="right"
+                  android:background="@null"
+                  android:textSize="@dimen/front_edit_task"
+                  android:lines="2" >
+
+              </EditText>
+
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" 
+              android:orientation="horizontal"
+              android:paddingTop="@dimen/btn_release_margin"
+              android:paddingBottom="@dimen/btn_release_margin">
+
+              <EditText
+                  android:id="@+id/tvTaskDealtime"
+                  style="@style/Front_EditTask"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@color/background_grey"
+                  android:editable="false"
+                  android:text="@string/hint_dead_time"
+                  android:lines="2">
+              </EditText>
+
+              <EditText
+                  android:id="@+id/evTaskDealtime"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="right"
+                  android:background="@color/background_grey"
+                  android:textSize="@dimen/front_edit_task"
+                  android:lines="2">
+              </EditText>
+
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" 
+              android:background="@color/background_grey">
+
+              <EditText
                     android:id="@+id/tvTaskContent"
                     style="@style/Front_EditTask"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/content_text_size"
                     android:background="@null"
                     android:lines="2" 
                     android:editable="false"
-                    android:text="@string/hint_task_context">
-                </EditText>
+                    android:gravity="bottom"
+                    android:text="@string/hint_task_context" >
+              </EditText>
+          </LinearLayout>
 
-               <EditText
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/background_grey"
+              android:orientation="vertical" >
+
+              <EditText
                     android:id="@+id/evTaskContent"
                     android:background="@null"
                     android:layout_width="match_parent"
@@ -119,43 +129,38 @@
                     android:textSize="@dimen/front_edit_task"
                     android:lines="7" >
                 </EditText>
+          </LinearLayout>
 
-            </LinearLayout>
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="@dimen/text_btn_margin"
+              android:orientation="vertical" >
+              
+              <ImageButton
+                  android:id="@+id/btnSaveEditTask"
+                  android:contentDescription="@string/btn_save_task"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/btn_long" 
+                  android:paddingBottom="@dimen/btn_release_margin"/>
+              
+           
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="@dimen/btn_release_margin"
+              android:orientation="vertical" >
+              
+              <ImageButton
+                  android:id="@+id/btnPersonnelArrange"
+                  android:contentDescription="@string/btn_people_arrange"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:background="@drawable/btn_long" />
+          </LinearLayout>
+            
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/btn_release_margin"
-        android:paddingRight="@dimen/btn_release_margin" >
-
-        <Button
-            android:id="@+id/btnSaveEditTask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_background"
-            android:onClick="btnSave"
-            android:padding="@dimen/btn_release_margin"
-            android:text="@string/btn_save_task"
-            android:textColor="@color/front_title"
-            android:textSize="@dimen/front_btn" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/btn_release_margin" >
-
-        <Button
-            android:id="@+id/btnPersonnelArrange"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_background"
-            android:onClick="btnPeopleArrange"
-            android:padding="@dimen/btn_release_margin"
-            android:text="@string/btn_people_arrange"
-            android:textColor="@color/front_title"
-            android:textSize="@dimen/front_btn" />
-    </LinearLayout>
-
 </LinearLayout>

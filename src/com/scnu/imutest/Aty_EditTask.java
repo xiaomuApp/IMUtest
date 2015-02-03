@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.*;
 
 public class Aty_EditTask extends Activity {
 	/*定义变量*/
@@ -39,15 +41,31 @@ public class Aty_EditTask extends Activity {
 		m_time=(EditText)findViewById(R.id.evTaskDealtime);
 		m_message=(EditText)findViewById(R.id.evTaskContent);
 		
+		m_theme.setHint("请输入任务主题");
+		m_time.setHint("请输入任务截止时间");
+		m_message.setHint("请输入任务内容");
+		
+		m_time.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v) {
+				new DatePickerDialog(Aty_EditTask.this,new DatePickerDialog.OnDateSetListener()
+				{
+					@Override
+					public void onDateSet(DatePicker v, int year,
+							int monthOfyear, int dayOfmonth) {
+						m_time.setText(String.format("%d:%d:%d",year,monthOfyear,dayOfmonth));
+					}
+				},2015,2,4);
+			}	
+		});
+		
 		GetMessageFromAty_TaskList();
 	
 		/*获得Button对象监听事件*/
 		findViewById(R.id.btnReturnActivity).setOnClickListener(backOnClick);
 		findViewById(R.id.btnSaveEditTask).setOnClickListener(saveOnClick);
 		findViewById(R.id.btnPersonnelArrange).setOnClickListener(nextOnClick);
-		
-		GetMessageFromAty_TaskList();
-
 	}
 
 	/*获取前一个Activity传递过来的数据*/
