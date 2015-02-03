@@ -18,10 +18,11 @@ import android.widget.Toast;
 
 public class Aty_PersonnelList extends Activity implements OnClickListener {
 
-	private MyAdapter adapter;
+	private Adapter_PersonnelList adapter;
 	private ListView listViewPesonnel;
-	private static ArrayList<Data_ClubInformation> personnelList=new ArrayList<Data_ClubInformation>();
-	private static ArrayList<Data_ClubInformation> addPersonnelList=new ArrayList<Data_ClubInformation>();
+	private static ArrayList<Data_ClubInformation> personnelList;
+	private ArrayList<Data_ClubInformation> addPersonnelList;
+	private ArrayList<Data_ClubInformation> concelPersonnelList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +34,17 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 		findViewById(R.id.btnCommit).setOnClickListener(this);
 		findViewById(R.id.btnAllSelect).setOnClickListener(this);
 		findViewById(R.id.btnReturnPeopleArrange).setOnClickListener(this);
+		personnelList=new ArrayList<Data_ClubInformation>();
+		addPersonnelList=new ArrayList<Data_ClubInformation>();
+		concelPersonnelList=new ArrayList<Data_ClubInformation>();
 		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
-		adapter = new MyAdapter(this, R.layout.list_cell_people_list, personnelList);
+		adapter = new Adapter_PersonnelList(this, R.layout.list_cell_people_list, personnelList);
 		listViewPesonnel.setAdapter(adapter);
 	}
 
-	public class MyAdapter extends Adapter_PersonnelList<Data_ClubInformation> {
+	public class Adapter_PersonnelList extends Adapter_Gerneral<Data_ClubInformation> {
 		
-		public MyAdapter(Context context, int listCellId,
+		public Adapter_PersonnelList(Context context, int listCellId,
 				ArrayList<Data_ClubInformation> list) {
 			super(context, listCellId, list);
 		}
@@ -60,7 +64,7 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 				viewHolder = (ViewHolder)convertView.getTag();  
 			}  
 			final Data_ClubInformation msg = personnelList.get(position);  
-			viewHolder.tvNameDepartment.setText(msg.getName()+"("+msg.getDepartment()+")"); 
+			viewHolder.tvNameDepartment.setText(msg.getName()+" ( "+msg.getDepartment()+" ) "); 
 			viewHolder.tvPosition.setText("职位："+msg.getPosition());
 			viewHolder.checkBox.setChecked(msg.isCheck);
 			
@@ -70,7 +74,7 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 				public void onClick(View v) {  
 					if(msg.isCheck){  
 						msg.isCheck = false; 
-						addPersonnelList.remove(msg);
+						concelPersonnelList.add(msg);
 					}else{  
 						msg.isCheck = true;  
 						addPersonnelList.add(msg);
@@ -128,6 +132,7 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 		Intent iPersonnelPlacement=new Intent();
 		Bundle data = new Bundle();
 		data.putParcelableArrayList("add", addPersonnelList);
+		data.putParcelableArrayList("concel", concelPersonnelList);
 		iPersonnelPlacement.putExtras(data);
 		setResult(1, iPersonnelPlacement);
 		finish();

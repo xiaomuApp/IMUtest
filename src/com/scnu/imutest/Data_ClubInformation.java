@@ -111,7 +111,14 @@ public class Data_ClubInformation implements Parcelable, Serializable{
 	public void setPersonnelCheckBox(CheckBox personnelCheckBox) {
 		this.personnelCheckBox = personnelCheckBox;
 	}
-
+	
+	public boolean equals(Data_ClubInformation item) {
+		if(item.name.equals(name)){
+			return true;
+		}else{
+			return super.equals(item);
+		}
+	}
 
 
 	@Override

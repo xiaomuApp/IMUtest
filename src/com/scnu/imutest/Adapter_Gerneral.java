@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public abstract class Adapter_PersonnelList<T> extends BaseAdapter {
+public abstract class Adapter_Gerneral<T extends Data_ClubInformation> extends BaseAdapter {
 
-	public Adapter_PersonnelList(Context context, int listCellId, ArrayList<T> list) {
+	public Adapter_Gerneral(Context context, int listCellId, ArrayList<T> list) {
 		super();
 		this.context = context;
 		this.listCellId = listCellId;
@@ -23,7 +23,7 @@ public abstract class Adapter_PersonnelList<T> extends BaseAdapter {
 		return context;
 	}
 	
-	private ArrayList<T> personnelList = new ArrayList<T>();
+	protected ArrayList<T> personnelList = new ArrayList<T>();
 	
 	public void copy(ArrayList<T> list){
 		personnelList = list;
@@ -37,16 +37,34 @@ public abstract class Adapter_PersonnelList<T> extends BaseAdapter {
 		personnelList.remove(position);
 	}
 	
-	public void removeLast(){
-		personnelList.remove(getCount()-1);
-	}
 	
 	public void removeItem(T item){
-		personnelList.remove(item);
+		int pos = getPos(item);
+		if(pos == -1){
+			System.out.println("没有移除元素");
+			return;
+		}else{
+			System.out.println("找到移除元素"+item.toString());
+			remove(getPos(item));
+		}
+		notifyDataSetChanged();
 	}
 	
 	public void add(T item){
 		personnelList.add(item);
+	}
+	
+	public int getPos(T item){
+		for(int i=0; i<personnelList.size(); i++){
+			if(personnelList.get(i).equals(item)){
+				System.out.println(personnelList.get(i)+" = "+item);
+				return i;
+			}else{
+				System.out.println(personnelList.get(i)+" != "+item);
+			}
+		}
+		return -1;
+		
 	}
 	
 	@Override
