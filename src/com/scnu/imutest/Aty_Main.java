@@ -18,10 +18,10 @@ public class Aty_Main extends Activity implements OnClickListener {
 	private Data_ClubInformation pl4=new Data_ClubInformation(2014021346, "龙宇文", "组员", "安卓组", "逗比比",0);
 	private Data_ClubInformation pl5=new Data_ClubInformation(2014021345, "吴伟峰", "组员", "安卓组", "逗比比",0);
 	//任务信息
-	private Data_TaskDistribute p21=new Data_TaskDistribute("任务一", "一月一日", "搬凳子", "女生节", null);
-	private Data_TaskDistribute p22=new Data_TaskDistribute("任务二", "二月一日", "搬凳子", "妇女节", null);
-	private Data_TaskDistribute p23=new Data_TaskDistribute("任务三", "三月一日", "搬凳子", "男生节", null);
-	private Data_TaskDistribute p24=new Data_TaskDistribute("任务四", "四月一日", "搬凳子", "情人节", null);
+	private Data_TaskDistribute p21=new Data_TaskDistribute("任务",1, "一月一日", "搬凳子", "女生节", null);
+	private Data_TaskDistribute p22=new Data_TaskDistribute("任务",2, "二月一日", "搬凳子", "妇女节", null);
+	private Data_TaskDistribute p23=new Data_TaskDistribute("任务",3, "三月一日", "搬凳子", "男生节", null);
+	private Data_TaskDistribute p24=new Data_TaskDistribute("任务",4, "四月一日", "搬凳子", "情人节", null);
 	private ArrayList<Data_ClubInformation> personnelList=null;
 	public static ArrayList<Data_TaskDistribute> taskList=null;
 	public static Bundle bundlePersonnelPlacement=null;
@@ -43,9 +43,9 @@ public class Aty_Main extends Activity implements OnClickListener {
 		taskList.add(p22);
 		taskList.add(p23);
 		taskList.add(p24);
-		Data_TaskDistribute activityTask = new Data_TaskDistribute("任务1", "2015.2.14", "完成小木社团app初稿，并通过审核", "完成小木社团app初稿", personnelList);
+		Data_TaskDistribute activityTask = new Data_TaskDistribute("任务",1, "2015.2.14", "完成小木社团app初稿，并通过审核", "完成小木社团app初稿", personnelList);
 		currentData_Task=new ArrayList<Data_Task>();
-		currentData_Task.add(new Data_Task(this, "任务1", null, activityTask));
+		currentData_Task.add(new Data_Task(this, "任务",1,"","","", null, activityTask));
 		for (int i = 0; i < personnelList.size(); i++) {
 
 			personnelList.get(i).setData_TaskList(currentData_Task);

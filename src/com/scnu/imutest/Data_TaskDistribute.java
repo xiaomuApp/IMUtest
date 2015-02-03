@@ -14,13 +14,15 @@ public class Data_TaskDistribute implements Serializable{
 	private static final long serialVersionUID = 1L;
 	//任务分配数据
 	private String taskName="";//任务名
+	private int taskId=0;  //任务编号
 	private String taskcutofftime="";//暂定使用String类型，任务截止时间
 	private String taskContent="";//任务内容
 	private String taskSubject="";//任务主题
 	private ArrayList<Data_ClubInformation> taskArrangePersonnel=null;
 	
-	public Data_TaskDistribute(String taskName,String taskcutofftime,String taskContent,String taskSubject,ArrayList<Data_ClubInformation> taskArrangePersonnel) {
+	public Data_TaskDistribute(String taskName,int taskId,String taskcutofftime,String taskContent,String taskSubject,ArrayList<Data_ClubInformation> taskArrangePersonnel) {
 		this.taskName=taskName;
+		this.taskId=taskId;
 		this.taskcutofftime=taskcutofftime;
 		this.taskContent=taskContent;
 		this.taskSubject=taskSubject;
@@ -35,6 +37,14 @@ public class Data_TaskDistribute implements Serializable{
 		this.taskName = taskName;
 	}
 
+	public int getTaskId() {
+		return taskId;
+	}
+	
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
+	}
+	
 	public String getTaskcutofftime() {
 		return taskcutofftime;
 	}

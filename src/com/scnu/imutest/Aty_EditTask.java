@@ -22,6 +22,11 @@ public class Aty_EditTask extends Activity {
 	Data_TaskDistribute data;     //定义任务的数据变量
 	private Bundle bundle;         //定义Activity间传递数据的打包变量
 	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
+	
+	private String subject;
+	private String time;
+	private String content;
+	int id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +45,35 @@ public class Aty_EditTask extends Activity {
 		findViewById(R.id.btnReturnActivity).setOnClickListener(backOnClick);
 		findViewById(R.id.btnSaveEditTask).setOnClickListener(saveOnClick);
 		findViewById(R.id.btnPersonnelArrange).setOnClickListener(nextOnClick);
+		
+		GetMessageFromAty_TaskList();
+
 	}
 
 	/*获取前一个Activity传递过来的数据*/
 	public void GetMessageFromAty_TaskList()
 	{
 		personnelList=Aty_Main.bundlePersonnelPlacement.getParcelableArrayList("personnelList");
-		Bundle bundle=this.getIntent().getExtras();
-		m_theme.setText(Integer.toString(bundle.getInt("position")));
+		
+		data=(Data_TaskDistribute) getIntent().getSerializableExtra("task");
+		id=data.getTaskId();
+		subject=data.getTaskSubject();
+		time=data.getTaskcutofftime();
+		content=data.getTaskContent();
+		
+		if(subject!=null)
+			m_theme.setText(subject);
+		if(time!=null)
+			m_time.setText(time);
+		if(content!=null)
+			m_message.setText(content);
+		
 	}
 
 	/*将Activity的数据打包并传递到下一个Activity*/
 	public void GetMessageInThisActivity()
 	{
-		data = new Data_TaskDistribute(null, m_time.getText().toString(), m_message.getText().toString(), m_theme.getText().toString(), null);
+		data = new Data_TaskDistribute(null,id, m_time.getText().toString(), m_message.getText().toString(), m_theme.getText().toString(), null);
 		bundle = new Bundle();
 		bundle.putSerializable("task", data);
 	}
@@ -81,11 +101,12 @@ private Button.OnClickListener saveOnClick=new Button.OnClickListener()
 	public void onClick(View v)
 	{
 
-		Intent intent=new Intent();
+		Intent intent=new Intent(Aty_EditTask.this,Aty_TaskList.class);
 		GetMessageInThisActivity();
 	    intent.putExtras(bundle);
 	    setResult(RESULT_OK,intent);
-		DisplayToast("保存任务信息成功");
+		//DisplayToast("保存任务信息成功");
+	    finish();
 	}
 };
 

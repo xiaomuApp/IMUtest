@@ -28,7 +28,6 @@ public class Aty_PersonnelArrange extends Activity implements OnItemClickListene
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_people_arrange);
-		
 /*从编辑任务获取主题、截止时间、任务内容、活动名	*/	
 		taskDistribute = (Data_TaskDistribute) getIntent().getExtras().getSerializable("task");
 		m_theme = (TextView) findViewById(R.id.tvTaskTheme);

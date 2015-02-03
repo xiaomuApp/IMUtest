@@ -12,26 +12,27 @@
 
         <TextView
             android:id="@+id/textView1"
+            style="@style/Front_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="@string/title_activity_list"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            style="@style/Front_Title" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
         <ImageButton
-            android:contentDescription="@string/btn_return"
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:background="@color/title_background"
+            android:contentDescription="@string/btn_return"
             android:src="@drawable/btn_return" />
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/activitylist"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
@@ -39,9 +40,9 @@
 
     <ImageButton
         android:id="@+id/btnAdd"
-        android:contentDescription="@string/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/btn_add"
         android:src="@drawable/add" />
 
 </LinearLayout>
