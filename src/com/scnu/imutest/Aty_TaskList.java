@@ -22,7 +22,7 @@ public class Aty_TaskList extends Activity {
 
 	private ListView mListView;
 	private SimpleAdapter mAdapter=null;
-	private int numTouch=1;
+	//private int numTouch=1;
 
 	private LinkedList<HashMap<String, Object>> list;  //显示在adapter中的列表
 	private HashMap<String, Object> data=null;
@@ -45,11 +45,11 @@ public class Aty_TaskList extends Activity {
 	    findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent=new Intent(Aty_TaskList.this, Aty_EditTask.class);
-				datatask = new Data_TaskDistribute("", numTouch++, "", "", "", null);
+				datatask = new Data_TaskDistribute("",DataList.size()+1, "", "", "", null);
 				Bundle bundle=new Bundle();
 				bundle.putSerializable("task", datatask);
 				intent.putExtras(bundle);
-				startActivityForResult(intent, numTouch);				
+				startActivityForResult(intent,1);				
 			}
 		});
 	    
