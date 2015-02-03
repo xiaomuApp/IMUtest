@@ -98,9 +98,10 @@ public class Aty_TaskList extends Activity {
 			else
 			{
 				DataList.add(datatask.getTaskId(), datatask);
-				DataList.remove(datatask.getTaskId());
+				DataList.remove(datatask.getTaskId()-1);
+				
 				list.add(datatask.getTaskId(), data);
-				list.remove(datatask.getTaskId());			
+				list.remove(datatask.getTaskId()-1);			
 			}			
 			mAdapter=new SimpleAdapter(Aty_TaskList.this,list, R.layout.list_cell_activity_list, new String[]{"taskName","taskSubject","taskTime"},new int[]{R.id.taskName,R.id.taskSubject,R.id.taskTime} );
 			mListView.setAdapter(mAdapter);
