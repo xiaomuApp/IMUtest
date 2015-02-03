@@ -87,8 +87,8 @@ public class Aty_TaskList extends Activity {
 			
 			data=new HashMap<String, Object>();
 			data.put("taskName","任务" +datatask.getTaskId());
-			data.put("taskSubject","活动主题"+datatask.getTaskSubject());
-		    data.put("taskTime","截止时间"+datatask.getTaskcutofftime());
+			data.put("taskSubject","活动主题:"+datatask.getTaskSubject());
+		    data.put("taskTime","截止时间:"+datatask.getTaskcutofftime());
 			    		
 			if(datatask.getTaskId()>list.size())
 			{
