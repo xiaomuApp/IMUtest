@@ -26,5 +26,6 @@
     <string name="text_organier">组织者</string>
     <string name="text_performer">执行者</string>
     <string name="title_activity_list">活动列表</string>
+    <string name="hint_search">按名字查找</string>
 
 </resources>

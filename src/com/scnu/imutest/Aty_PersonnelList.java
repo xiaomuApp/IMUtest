@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +53,8 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 				viewHolder = new ViewHolder();  
 				viewHolder.tvNameDepartment = (TextView) convertView.findViewById(R.id.tvNameDepartment);
 				viewHolder.tvPosition = (TextView) convertView.findViewById(R.id.tvPosition);
-				viewHolder.checkBox = (CheckBox)convertView.findViewById(R.id.checkBox);  
+				viewHolder.checkBox = (CheckBox)convertView.findViewById(R.id.checkBox);
+				viewHolder.portrait = (ImageView) convertView.findViewById(R.id.ivPortrait);
 				convertView.setTag(viewHolder);  
 			}else{  
 				viewHolder = (ViewHolder)convertView.getTag();  
@@ -60,7 +62,7 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 			final Data_ClubInformation msg = personnelList.get(position);  
 			viewHolder.tvNameDepartment.setText(msg.getName()+"("+msg.getDepartment()+")"); 
 			viewHolder.tvPosition.setText("职位："+msg.getPosition());
-			viewHolder.checkBox.setChecked(msg.isCheck);  
+			viewHolder.checkBox.setChecked(msg.isCheck);
 			
 			viewHolder.checkBox.setOnClickListener(new OnClickListener() {  
 
@@ -94,7 +96,8 @@ public class Aty_PersonnelList extends Activity implements OnClickListener {
 	private class ViewHolder{  
 		TextView tvNameDepartment;
 		TextView tvPosition;
-		CheckBox checkBox;  
+		CheckBox checkBox;
+		ImageView portrait;
 	}  
 
 	@Override

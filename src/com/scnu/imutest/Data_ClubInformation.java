@@ -24,8 +24,8 @@ public class Data_ClubInformation implements Parcelable, Serializable{
 	private String name=" ";
 	private String position=" ";
 	private String department=" ";
-
 	private String club=" ";
+
 	public ArrayList<Data_Task> data_TaskList=null; //任务列表
 	public boolean isCheck = false;
 	public CheckBox personnelCheckBox=null;

@@ -11,7 +11,8 @@
         android:layout_height="@dimen/list_cell_personnel_list_height"
         android:background="@drawable/circle" >
 
-        <View
+        <ImageView
+            android:id="@+id/ivPortrait"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/circle" />
@@ -21,7 +22,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/list_base_margin" >
 
         <TextView
             android:id="@+id/tvNameDepartment"

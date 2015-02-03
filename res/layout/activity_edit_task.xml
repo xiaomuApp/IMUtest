@@ -39,7 +39,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
-            android:background="@drawable/corner_round_topright_topleft">
+            android:background="@drawable/corner_round_topright_topleft_grey">
             
         <EditText
               android:id="@+id/tvTaskTheme"
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" 
-                android:background="@drawable/corner_round_bottomright_bottomleft">
+                android:background="@drawable/corner_round_bottomright_bottomleft_grey">
 
                 <EditText
                     android:id="@+id/tvTaskContent"

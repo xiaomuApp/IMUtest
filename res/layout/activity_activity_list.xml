@@ -27,7 +27,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:background="@color/title_background"
-            android:src="@drawable/back" />
+            android:src="@drawable/btn_return" />
     </RelativeLayout>
 
     <ListView

@@ -13,5 +13,6 @@
     <color name="background_grey">#e0e0e0</color>
     <color name="background_lightgrey">#eef3f6</color>
     <color name="front_people_list">#7e9096</color>
+    <color name="baceground_white">#ffffff</color>
 
 </resources>

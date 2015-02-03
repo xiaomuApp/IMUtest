@@ -55,7 +55,7 @@
             style="@style/Front_EditTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/corner_round_all"
+            android:background="@drawable/corner_round_all_grey"
             android:hint="@string/hint_task_theme"
             android:lines="1"
             android:padding="@dimen/list_base_margin" />
@@ -71,28 +71,32 @@
             android:id="@+id/lvPeople"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/corner_round_all" >
+            android:background="@drawable/corner_round_all_grey" >
         </ListView>
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:paddingBottom="@dimen/list_base_margin"
         android:paddingLeft="@dimen/list_base_margin"
         android:paddingRight="@dimen/list_base_margin" >
 
-        <Button
+        <ImageButton
             android:id="@+id/btnRelease"
+            android:contentDescription="@string/btn_release"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/title_background"
-            android:onClick="btnRelease"
-            android:padding="@dimen/btn_release_margin"
+            android:background="@drawable/btn_long"
+            android:onClick="btnRelease" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
             android:text="@string/btn_release"
             android:textColor="@color/front_title"
             android:textSize="@dimen/front_btn" />
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>
