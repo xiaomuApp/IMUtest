@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="front_topic">25sp</dimen>
+    <dimen name="list_base_margin">10dp</dimen>
+    <dimen name="list_cell_margin">10dp</dimen>
+    <dimen name="front_btn">20sp</dimen>
+    <dimen name="btn_release_margin">7dp</dimen>
+    <dimen name="title_height">60dp</dimen>
+    <dimen name="front_task_list_cell">15sp</dimen>
+    <dimen name="list_cell_height_task_list">90dp</dimen>
+    <dimen name="front_edit_task">20sp</dimen>
+    <dimen name="front_people_arrange_large">20sp</dimen>
+    <dimen name="front_people_list">20sp</dimen>
+    <dimen name="editview_margin">4dp</dimen>
+    <dimen name="list_cell_personnel_list_height">50dp</dimen>
+    <dimen name="front_people_anrrange_small">15sp</dimen>
+
+</resources>

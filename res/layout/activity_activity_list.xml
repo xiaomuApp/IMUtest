@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/RlayoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/title_background" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/title_activity_list"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            style="@style/Front_Title" />
+        <ImageButton
+            android:contentDescription="@string/btn_return"
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@color/title_background"
+            android:src="@drawable/back" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/activitylist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </ListView>
+
+    <ImageButton
+        android:id="@+id/btnAdd"
+        android:contentDescription="@string/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add" />
+
+</LinearLayout>

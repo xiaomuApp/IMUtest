@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.scnu.imutest.Aty_Welcome" >
+
+ <!--    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topic_height"
+        android:background="@color/topic_blue" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topic_height"
+        android:text="@string/text_test"
+        android:textSize="@dimen/fr"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white" />
+
+    </RelativeLayout> -->
+
+
+    <Button
+        android:id="@+id/btnOrganiger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_base_margin"
+        android:text="@string/text_organier" />
+
+    <Button
+        android:id="@+id/btnPerformer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_base_margin"
+        android:text="@string/text_performer" />
+
+</LinearLayout>
