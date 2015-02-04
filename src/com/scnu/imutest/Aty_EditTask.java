@@ -44,11 +44,8 @@ public class Aty_EditTask extends Activity {
 		m_time=(EditText)findViewById(R.id.evTaskDealtime);
 		t_message=(EditText)findViewById(R.id.tvTaskContent);
 		m_message=(EditText)findViewById(R.id.evTaskContent);
-		
-		m_theme.setHint("请输入任务主题");
-		m_time.setHint("请输入任务截止时间");
-		m_message.setHint("请输入任务内容");
-		
+	
+		/*获取系统现在的日历*/
 		c = Calendar.getInstance(); 
 	
 		/*日期控件连接函数*/
