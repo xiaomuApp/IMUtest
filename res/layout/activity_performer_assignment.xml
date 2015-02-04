@@ -24,19 +24,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/title"
+            android:text="@string/title_subtitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
             style="@style/Front_Title" />
     </RelativeLayout>
 
-    <TextView
-        android:textColor="#666666"
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/title_subtitle" />
 
     <ListView
         android:id="@+id/lv"

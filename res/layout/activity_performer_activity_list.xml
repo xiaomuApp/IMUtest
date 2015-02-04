@@ -25,7 +25,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             style="@style/Front_Title"
-            android:text="活动列表" />
+            android:text="活动详情" />
     </RelativeLayout>
 
     <LinearLayout
@@ -36,49 +36,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:paddingLeft="@dimen/list_base_margin"
+            android:paddingTop="@dimen/list_base_margin"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text=""
+                android:textSize="@dimen/front_edit_task" />
 
             <TextView
                 android:id="@+id/tvActivityID"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@color/background_grey"
+                android:textSize="@dimen/front_edit_task" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/list_base_margin"
+            android:paddingLeft="@dimen/list_base_margin">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="活动内容：" />
-
-            <TextView
-                android:id="@+id/tvActivityContext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textSize="@dimen/front_edit_task"
+                android:background="@color/background_grey"
                 android:text="截止时间：" />
 
             <TextView
                 android:id="@+id/tvActivityTime"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/background_grey"
+                android:textSize="@dimen/front_edit_task" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/list_base_margin"
+            android:paddingLeft="@dimen/list_base_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/background_grey"
+                android:textSize="@dimen/front_edit_task"
+                android:text="活动内容：" />
+
+            <TextView
+                android:id="@+id/tvActivityContext"
+                android:layout_width="match_parent"
+                android:background="@color/background_grey"
+                android:layout_height="wrap_content" 
+           		android:textSize="@dimen/front_edit_task"/>
         </LinearLayout>
     </LinearLayout>
 
