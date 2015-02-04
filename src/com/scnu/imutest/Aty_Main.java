@@ -150,10 +150,11 @@ public class Aty_Main extends Activity implements OnClickListener, OnViewChangeL
 		}else{
 			long currentClickTime = System.currentTimeMillis();
 			if(currentClickTime-lastClickTime<1000){
+				finish();
+			}else{
 				Toast.makeText(this, "再按一次后退键退出应用", Toast.LENGTH_SHORT).show();
 				lastClickTime = currentClickTime;
 			}
 		}
-		super.onBackPressed();
 	}
 }
