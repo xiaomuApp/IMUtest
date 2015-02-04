@@ -1,6 +1,7 @@
 package com.scnu.imutest;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,6 +25,7 @@ public class Aty_EditTask extends Activity {
 	private EditText m_message;  //定义内容输入框变量
 	Data_TaskDistribute data;     //定义任务的数据变量
 	private Bundle bundle;         //定义Activity间传递数据的打包变量
+	Calendar c;                           //定义获取系统时间变量
 	private ArrayList<Data_ClubInformation> personnelList=null;//下面通过bundle获取到的数据，可以使用
 	
 	private String subject;
@@ -46,13 +48,14 @@ public class Aty_EditTask extends Activity {
 		m_theme.setHint("请输入任务主题");
 		m_time.setHint("请输入任务截止时间");
 		m_message.setHint("请输入任务内容");
+		
+		c = Calendar.getInstance(); 
 	
 		/*日期控件连接函数*/
 		m_time.setOnFocusChangeListener(new OnFocusChangeListener()
 		{
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
-				// TODO 自动生成的方法存根
 				if(hasFocus)
 				{
 					dialog().show();
@@ -90,7 +93,7 @@ public class Aty_EditTask extends Activity {
 				String date=year+"-"+(monthOfYear+1)+"-"+dayOfMonth;
 				m_time.setText(date);
 			}		
-		},2013,6,6);
+		},c.get(Calendar.YEAR),c.get(Calendar.MONTH),c.get(Calendar.DAY_OF_MONTH));
 		return datePickerDialog;
 	}
 

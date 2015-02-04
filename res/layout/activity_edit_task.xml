@@ -145,7 +145,7 @@
                   android:id="@+id/btnSaveEditTask"
                   android:contentDescription="@string/btn_save_task"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
+                  android:layout_height="@dimen/btn_height"
                   android:background="@drawable/btn_long"  />
 
               <TextView
@@ -167,7 +167,7 @@
                  android:id="@+id/btnPersonnelArrange"
                  android:contentDescription="@string/btn_people_arrange"
                  android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
+                 android:layout_height="@dimen/btn_height"
                  android:background="@drawable/btn_long" />
               
               <TextView
