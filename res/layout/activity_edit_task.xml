@@ -46,6 +46,7 @@
                 style="@style/Front_EditTask"
                 android:layout_width="wrap_content"
                 android:gravity="center"
+                android:paddingLeft="@dimen/list_base_margin"
                 android:background="@null"
                 android:layout_height="wrap_content"
                 android:text="@string/hint_task_theme"
@@ -79,6 +80,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:background="@color/background_grey"
+                  android:paddingLeft="@dimen/list_base_margin"
                   android:editable="false"
                   android:text="@string/hint_dead_time"
                   android:lines="2">
@@ -91,6 +93,7 @@
                   android:layout_gravity="right"
                   android:background="@color/background_grey"
                   android:textSize="@dimen/front_edit_task"
+                  android:editable="false"
                   android:lines="2">
               </EditText>
 
@@ -107,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/content_text_size"
                     android:background="@null"
+                    android:paddingLeft="@dimen/list_base_margin"
                     android:lines="2" 
                     android:editable="false"
                     android:gravity="bottom"
@@ -126,41 +130,56 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="top"
+                    android:paddingLeft="@dimen/list_base_margin"
                     android:textSize="@dimen/front_edit_task"
                     android:lines="7" >
                 </EditText>
           </LinearLayout>
 
-          <LinearLayout
+          <FrameLayout
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingTop="@dimen/text_btn_margin"
-              android:orientation="vertical" >
-              
+              android:layout_height="wrap_content" 
+              android:paddingTop="@dimen/text_btn_margin">
+
               <ImageButton
                   android:id="@+id/btnSaveEditTask"
                   android:contentDescription="@string/btn_save_task"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:background="@drawable/btn_long" 
-                  android:paddingBottom="@dimen/btn_release_margin"/>
-              
-           
-          </LinearLayout>
+                  android:background="@drawable/btn_long"  />
 
-          <LinearLayout
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_vertical|center_horizontal"
+                  android:text="@string/btn_save_task"
+                  android:textColor="@color/front_title"
+                  android:textSize="@dimen/front_btn" />
+
+          </FrameLayout>
+
+          <FrameLayout
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingTop="@dimen/btn_release_margin"
-              android:orientation="vertical" >
+              android:layout_height="wrap_content" 
+              android:paddingTop="@dimen/btn_release_margin">
               
               <ImageButton
-                  android:id="@+id/btnPersonnelArrange"
-                  android:contentDescription="@string/btn_people_arrange"
+                 android:id="@+id/btnPersonnelArrange"
+                 android:contentDescription="@string/btn_people_arrange"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:background="@drawable/btn_long" />
-          </LinearLayout>
+              
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_vertical|center_horizontal"
+                  android:text="@string/btn_people_arrange"
+                  android:textColor="@color/front_title"
+                  android:textSize="@dimen/front_btn" />
+          </FrameLayout>
+
+          
             
     </LinearLayout>
 </LinearLayout>

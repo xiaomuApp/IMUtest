@@ -20,6 +20,7 @@ public class Aty_EditTask extends Activity {
 	/*定义变量*/
 	private EditText m_theme;    //定义主题输入框变量
 	private EditText m_time;     //定义截止时间输入框变量
+	private EditText t_message;    //定义任务内容提示框变量
 	private EditText m_message;  //定义内容输入框变量
 	Data_TaskDistribute data;     //定义任务的数据变量
 	private Bundle bundle;         //定义Activity间传递数据的打包变量
@@ -39,25 +40,36 @@ public class Aty_EditTask extends Activity {
 		/*获得EditText对象*/
 		m_theme=(EditText)findViewById(R.id.evTaskTheme);
 		m_time=(EditText)findViewById(R.id.evTaskDealtime);
+		t_message=(EditText)findViewById(R.id.tvTaskContent);
 		m_message=(EditText)findViewById(R.id.evTaskContent);
 		
 		m_theme.setHint("请输入任务主题");
 		m_time.setHint("请输入任务截止时间");
 		m_message.setHint("请输入任务内容");
-		
-		m_time.setOnClickListener(new OnClickListener()
+	
+		/*日期控件连接函数*/
+		m_time.setOnFocusChangeListener(new OnFocusChangeListener()
 		{
 			@Override
-			public void onClick(View v) {
-				new DatePickerDialog(Aty_EditTask.this,new DatePickerDialog.OnDateSetListener()
+			public void onFocusChange(View v, boolean hasFocus) {
+				// TODO 自动生成的方法存根
+				if(hasFocus)
 				{
-					@Override
-					public void onDateSet(DatePicker v, int year,
-							int monthOfyear, int dayOfmonth) {
-						m_time.setText(String.format("%d:%d:%d",year,monthOfyear,dayOfmonth));
-					}
-				},2015,2,4);
-			}	
+					dialog().show();
+				}
+			}			
+		});
+		
+		/*任务内容光标跳转函数*/
+		t_message.setOnFocusChangeListener(new OnFocusChangeListener()
+		{
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if(hasFocus)
+				{
+					m_message.requestFocus();
+				}
+			}			
 		});
 		
 		GetMessageFromAty_TaskList();
@@ -66,6 +78,20 @@ public class Aty_EditTask extends Activity {
 		findViewById(R.id.btnReturnActivity).setOnClickListener(backOnClick);
 		findViewById(R.id.btnSaveEditTask).setOnClickListener(saveOnClick);
 		findViewById(R.id.btnPersonnelArrange).setOnClickListener(nextOnClick);
+	}
+	
+	public DatePickerDialog dialog()
+	{
+		DatePickerDialog datePickerDialog=new DatePickerDialog(Aty_EditTask.this,new OnDateSetListener()
+		{
+			@Override
+			public void onDateSet(DatePicker view, int year, int monthOfYear,
+					int dayOfMonth) {
+				String date=year+"-"+(monthOfYear+1)+"-"+dayOfMonth;
+				m_time.setText(date);
+			}		
+		},2013,6,6);
+		return datePickerDialog;
 	}
 
 	/*获取前一个Activity传递过来的数据*/
