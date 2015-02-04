@@ -26,8 +26,8 @@ public class Aty_PerformerTaskList extends Activity {
 		Bundle bundle=new Bundle();
 		bundle=this.getIntent().getExtras();
 		tvActivityID.setText(bundle.getString("id"));
-		tvActivityContext.setText(bundle.getString("context"));
-		tvActivityTime.setText(bundle.getString("time"));
+		tvActivityContext.setText("活动内容："+bundle.getString("context"));
+		tvActivityTime.setText("截止时间："+bundle.getString("time"));
 		
 		findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
 			
