@@ -1,13 +1,18 @@
 package com.scnu.imutest;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -23,7 +28,6 @@ public class Aty_TaskList extends Activity {
 
 	private ListView mListView;
 	private SimpleAdapter mAdapter=null;
-	//private int numTouch=1;
 
 	private LinkedList<HashMap<String, Object>> list;  //显示在adapter中的列表
 	private HashMap<String, Object> data=null;
@@ -31,6 +35,7 @@ public class Aty_TaskList extends Activity {
 	private Data_TaskDistribute datatask;
 	private LinkedList<Data_TaskDistribute> DataList;//存储数据类型为Data_TaskDistribute的表
 
+	
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_activity_list);
@@ -41,6 +46,7 @@ public class Aty_TaskList extends Activity {
 	    mListView=(ListView) findViewById(R.id.activitylist);
 	    list=new LinkedList<HashMap<String,Object>>();
 	    DataList=new LinkedList<Data_TaskDistribute>();
+	    
 	   
 	    //添加任务按钮
 	    findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
@@ -54,7 +60,8 @@ public class Aty_TaskList extends Activity {
 			}
 		});
 	    
-	    //列表的相应按钮
+	    
+	    //列表每个item的相应按钮
 	    mListView.setOnItemClickListener(new OnItemClickListener() {		
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -68,15 +75,46 @@ public class Aty_TaskList extends Activity {
 			}
 		});
 	    
+	    
 	    //返回按钮
 	    findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				finish();				
+				SaveTask();
+				finish();
 			}
 		});
+	    
+	    
+	}
+	
+	@Override
+	public void onBackPressed() {
+		SaveTask();
+		finish();
+		
 	}
 
+	//把数据保存到文本DataTask.txt中
+	private void SaveTask() {
+		try {
+			OutputStream os=openFileOutput("DataTask", Context.MODE_APPEND);
+			for(int i=0;i<DataList.size();i++)
+			{
+				os.write(String.valueOf((DataList.get(i).getTaskId()+" ")).getBytes());
+				os.write((DataList.get(i).getTaskSubject()+" ").getBytes());
+				os.write((DataList.get(i).getTaskcutofftime()+" ").getBytes());
+				os.write((DataList.get(i).getTaskContent()+"\n").getBytes());
+				os.flush();
+			}
+			os.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
+	}
 
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -90,6 +128,7 @@ public class Aty_TaskList extends Activity {
 			data.put("taskName","任务" +datatask.getTaskId());
 			data.put("taskSubject","活动主题:"+datatask.getTaskSubject());
 		    data.put("taskTime","截止时间:"+datatask.getTaskcutofftime());
+		    data.put("taskDistribute","未发布");
 			    		
 			if(datatask.getTaskId()>list.size())
 			{
@@ -104,7 +143,7 @@ public class Aty_TaskList extends Activity {
 				list.add(datatask.getTaskId(), data);
 				list.remove(datatask.getTaskId()-1);			
 			}			
-			mAdapter=new SimpleAdapter(Aty_TaskList.this,list, R.layout.list_cell_activity_list, new String[]{"taskName","taskSubject","taskTime"},new int[]{R.id.taskName,R.id.taskSubject,R.id.taskTime} );
+			mAdapter=new SimpleAdapter(Aty_TaskList.this,list, R.layout.list_cell_activity_list, new String[]{"taskName","taskSubject","taskTime","taskDistribute"},new int[]{R.id.taskName,R.id.taskSubject,R.id.taskTime,R.id.taskDistribute} );
 			mListView.setAdapter(mAdapter);
 			break;
 			default:
@@ -112,8 +151,4 @@ public class Aty_TaskList extends Activity {
 			
 		}
 	}
-
-
-
 	}
-
