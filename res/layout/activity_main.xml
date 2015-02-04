@@ -1,40 +1,38 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.scnu.imutest.Aty_Welcome" >
+	    
+	<LinearLayout 
+	    android:id="@+id/llayout"
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true">
+    
+	    <include layout="@layout/bottom"/>
+	</LinearLayout>
+    
+	<com.scnu.imutest.MyScrollLayout
+	    android:id="@+id/ScrollLayout"
+	    android:layout_width="match_parent"
+	    android:layout_above="@id/llayout"
+	    android:layout_alignParentTop="true"
+	    android:layout_height="match_parent">
+	    <FrameLayout 
+	        android:background="@color/white"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+	        <include layout="@layout/organizer"/>
+	    </FrameLayout>
+	    <FrameLayout 
+	        android:background="@color/white"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+	        <include layout="@layout/performer"/>
+	    </FrameLayout>
+	</com.scnu.imutest.MyScrollLayout>
 
- <!--    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/topic_height"
-        android:background="@color/topic_blue" >
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/topic_height"
-        android:text="@string/text_test"
-        android:textSize="@dimen/fr"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textColor="@color/white" />
-
-    </RelativeLayout> -->
-
-
-    <Button
-        android:id="@+id/btnOrganiger"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/list_base_margin"
-        android:text="@string/text_organier" />
-
-    <Button
-        android:id="@+id/btnPerformer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/list_base_margin"
-        android:text="@string/text_performer" />
-
-</LinearLayout>
+</RelativeLayout>
