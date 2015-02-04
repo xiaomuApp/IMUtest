@@ -1,15 +1,13 @@
 ﻿package com.scnu.imutest;
 
-import android.R.bool;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.view.View.MeasureSpec;
 import android.widget.Scroller;
 
 public class MyScrollLayout extends ViewGroup{
@@ -79,9 +77,7 @@ public class MyScrollLayout extends ViewGroup{
 		// TODO Auto-generated method stub
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);		
 		final int width = MeasureSpec.getSize(widthMeasureSpec);       
-	    final int widthMode = MeasureSpec.getMode(widthMeasureSpec);      
-	    		
-		final int count = getChildCount();       
+	    final int count = getChildCount();       
         for (int i = 0; i < count; i++) {       
             getChildAt(i).measure(widthMeasureSpec, heightMeasureSpec);       
         }                
@@ -120,7 +116,7 @@ public class MyScrollLayout extends ViewGroup{
         }   
 	}
 
-	@Override
+	@SuppressLint("ClickableViewAccessibility") @Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub           	            
 	        final int action = event.getAction();    

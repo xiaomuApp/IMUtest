@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Aty_Main extends Activity implements OnClickListener, OnViewChangeListener {
 
@@ -137,5 +138,22 @@ public class Aty_Main extends Activity implements OnClickListener, OnViewChangeL
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+	
+	private long lastClickTime = 0;
+	
+	@Override
+	public void onBackPressed() {
+		if(lastClickTime<=0){
+			Toast.makeText(this, "再按一次后退键退出应用", Toast.LENGTH_SHORT).show();
+			lastClickTime = System.currentTimeMillis();
+		}else{
+			long currentClickTime = System.currentTimeMillis();
+			if(currentClickTime-lastClickTime<1000){
+				Toast.makeText(this, "再按一次后退键退出应用", Toast.LENGTH_SHORT).show();
+				lastClickTime = currentClickTime;
+			}
+		}
+		super.onBackPressed();
 	}
 }

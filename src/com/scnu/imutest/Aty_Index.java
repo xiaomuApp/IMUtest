@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Toast;
 
 public class Aty_Index extends Activity {
 	private String app_key = "801416605"; // 获取的appkey
@@ -69,4 +70,6 @@ public class Aty_Index extends Activity {
 			}
 		}
 	}
+	
+	
 }
