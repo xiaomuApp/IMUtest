@@ -4,12 +4,23 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class Aty_Main extends Activity implements OnClickListener {
+public class Aty_Main extends Activity implements OnClickListener, OnViewChangeListener {
 
+	private MyScrollLayout mScrollLayout;
+	private LinearLayout[] mImageViews;
+	private int mViewCount;
+	private int mCurSel;
+	
+	private TextView organizer;
+	private TextView performer;
 
 	private ArrayList<Data_Task> currentData_Task=null;
 	private Data_ClubInformation pl1=new Data_ClubInformation(2014021349, "池雪辉", "组长", "安卓组", "逗比比",1);
@@ -30,6 +41,7 @@ public class Aty_Main extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		init();
 		findViewById(R.id.btnOrganiger).setOnClickListener(this);
 		findViewById(R.id.btnPerformer).setOnClickListener(this);
 		personnelList = new ArrayList<Data_ClubInformation>();
@@ -55,8 +67,49 @@ public class Aty_Main extends Activity implements OnClickListener {
 		bundlePersonnelPlacement.putParcelableArrayList("personnelList", personnelList);
 	}
 
+	private void init(){
+		organizer = (TextView) findViewById(R.id.organizer);
+		performer = (TextView) findViewById(R.id.performer);
+		mScrollLayout = (MyScrollLayout) findViewById(R.id.ScrollLayout);
+		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.lllayout);
+		mViewCount = mScrollLayout.getChildCount();
+		mImageViews = new LinearLayout[mViewCount];
+		for(int i = 0; i < mViewCount; i++){
+			mImageViews[i] = (LinearLayout) linearLayout.getChildAt(i);
+			mImageViews[i].setEnabled(true);
+			mImageViews[i].setOnClickListener(this);
+			mImageViews[i].setTag(i);
+		}
+		mCurSel = 0;
+		mImageViews[mCurSel].setEnabled(false);
+		mScrollLayout.SetOnViewChangeListener(this);
+		
+	}
+	
+	private void setCurPoint(int index){
+		if(index < 0 || index > mViewCount - 1 || mCurSel == index){
+			return;
+		}
+		mImageViews[mCurSel].setEnabled(true);
+		mImageViews[index].setEnabled(false);
+		mCurSel = index;
+		
+		if(index == 0){
+			organizer.setTextColor(0xff228B22);
+			performer.setTextColor(Color.BLACK);
+		}else if(index == 1){
+			organizer.setTextColor(Color.BLACK);
+			performer.setTextColor(0xff228b22);
+		}
+	}
+	
 	@Override
 	public void onClick(View v) {
+		if(v.getTag() != null){
+			int pos = (Integer) (v.getTag());
+			setCurPoint(pos);
+			mScrollLayout.snapToScreen(pos);
+		}
 		switch (v.getId()) {
 		case R.id.btnOrganiger:
 			Intent iOrganiger=new Intent(Aty_Main.this, Aty_TaskList.class);
@@ -71,5 +124,18 @@ public class Aty_Main extends Activity implements OnClickListener {
 			break;
 		}
 
+	}
+
+	@Override
+	public void OnViewChange(int view) {
+		setCurPoint(view);
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if((keyCode == KeyEvent.KEYCODE_MENU)){
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }

@@ -11,7 +11,7 @@ public class Aty_Welcome extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_welcome);
+		setContentView(R.layout.activity_index);
 		new Thread(){
 			public void run() {
 				try {
