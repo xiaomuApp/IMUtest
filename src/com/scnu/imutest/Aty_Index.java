@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Toast;
 
 public class Aty_Index extends Activity {
 	private String app_key = "801416605"; // 获取的appkey
@@ -69,4 +70,22 @@ public class Aty_Index extends Activity {
 			}
 		}
 	}
+	
+	private long lastClickTime = 0;
+	
+	@Override
+	public void onBackPressed() {
+		if(lastClickTime<=0){
+			Toast.makeText(this, "再按一次后退键退出应用", Toast.LENGTH_SHORT).show();
+			lastClickTime = System.currentTimeMillis();
+		}else{
+			long currentClickTime = System.currentTimeMillis();
+			if(currentClickTime-lastClickTime<1000){
+				Toast.makeText(this, "再按一次后退键退出应用", Toast.LENGTH_SHORT).show();
+				lastClickTime = currentClickTime;
+			}
+		}
+		super.onBackPressed();
+	}
+	
 }
