@@ -2,8 +2,9 @@ package com.scnu.imutest;
 
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,7 +13,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -88,26 +88,26 @@ public class Aty_TaskList extends Activity {
 	    
 	}
 	
-	@Override
 	public void onBackPressed() {
 		SaveTask();
 		finish();
 		
 	}
 
-	//把数据保存到文本DataTask.txt中
+	//把数据保存到文本DataTask中
 	private void SaveTask() {
 		try {
-			OutputStream os=openFileOutput("DataTask", Context.MODE_APPEND);
+			FileOutputStream fos=openFileOutput("DataTask", Context.MODE_PRIVATE);
+		    ObjectOutputStream oos=new ObjectOutputStream(fos);
+		    //oos.writeObject(DataList);
+		    
 			for(int i=0;i<DataList.size();i++)
 			{
-				os.write(String.valueOf((DataList.get(i).getTaskId()+" ")).getBytes());
-				os.write((DataList.get(i).getTaskSubject()+" ").getBytes());
-				os.write((DataList.get(i).getTaskcutofftime()+" ").getBytes());
-				os.write((DataList.get(i).getTaskContent()+"\n").getBytes());
-				os.flush();
+				oos.writeObject(DataList.get(i));
 			}
-			os.close();
+			
+			oos.close();
+			fos.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
