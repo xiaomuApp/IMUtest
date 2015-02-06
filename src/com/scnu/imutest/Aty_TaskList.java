@@ -10,12 +10,15 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -47,7 +50,7 @@ public class Aty_TaskList extends Activity {
 	    list=new LinkedList<HashMap<String,Object>>();
 	    DataList=new LinkedList<Data_TaskDistribute>();
 	    
-	   
+		
 	    //添加任务按钮
 	    findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -75,6 +78,32 @@ public class Aty_TaskList extends Activity {
 			}
 		});
 	    
+	    //长按可删除任务
+	    mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					final int position, long id) {
+				new AlertDialog.Builder(Aty_TaskList.this).setTitle("提醒").setMessage("您确定要删除该项吗？").setNegativeButton("取消",null).setPositiveButton("确定", new OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						DataList.remove(position);
+						list.remove(position);
+						for(int i=position;i<DataList.size();i++)
+						{
+							DataList.get(i).setTaskId(i+1);
+							list.get(i).put("taskName", "任务"+DataList.get(i).getTaskId());
+						}
+						mAdapter=new SimpleAdapter(Aty_TaskList.this,list, R.layout.list_cell_activity_list, new String[]{"taskName","taskSubject","taskTime","taskDistribute"},new int[]{R.id.taskName,R.id.taskSubject,R.id.taskTime,R.id.taskDistribute} );
+						mListView.setAdapter(mAdapter);
+					}
+				}).show();
+				
+				
+				return false;
+			}
+		});
 	    
 	    //返回按钮
 	    findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
@@ -94,12 +123,12 @@ public class Aty_TaskList extends Activity {
 		
 	}
 
+	
 	//把数据保存到文本DataTask中
 	private void SaveTask() {
 		try {
-			FileOutputStream fos=openFileOutput("DataTask", Context.MODE_PRIVATE);
+			FileOutputStream fos=new FileOutputStream("DataTask");
 		    ObjectOutputStream oos=new ObjectOutputStream(fos);
-		    //oos.writeObject(DataList);
 		    
 			for(int i=0;i<DataList.size();i++)
 			{
@@ -116,6 +145,7 @@ public class Aty_TaskList extends Activity {
 				
 	}
 
+	
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		switch(resultCode)
